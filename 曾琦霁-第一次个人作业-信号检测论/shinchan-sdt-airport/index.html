@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>春日部机场 · Signal Detection Security Check</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main id="app" class="app-shell">
+  <!-- ==================== 首页：实验封面 ==================== -->
+  <section id="screen-home" class="screen active home-cover-screen">
+    <div class="home-cover-wrap">
+      <img class="home-cover-image" src="assets/home-cover.png" alt="春日部机场信号检测与机场安检实验封面">
+      <button id="startSetup" class="home-cover-start" aria-label="开始实验">开始实验</button>
+    </div>
+  </section>
+
+  <!-- ==================== 参数设置：策略与难度 ==================== -->
+  <section id="screen-setup" class="screen">
+    <div class="topbar"><span>✈ 春日部机场 · 安检中心</span><span>SECURITY SETUP</span></div>
+    <div class="setup-card">
+      <div class="section-kicker">CHECK-IN COUNTER 01</div><h2>安检任务设置</h2><p class="muted">选择本轮的安检策略与刺激辨别难度。<b>难度</b>改变目标的可辨别程度；<b>策略</b>改变误判的任务代价，从而影响你在不确定时的决策标准。</p>
+      <div class="setup-grid">
+        <div class="option-group"><h3>01 · 安检策略</h3>
+          <button class="choice strategy selected" data-value="strict"><b>🛡 STRICT</b><span>安全优先</span><small>不确定时倾向 CHECK。漏检危险物品 −10 分；误拦普通行李 −2 分。</small></button>
+          <button class="choice strategy" data-value="fast"><b>⚡ FAST</b><span>通行优先</span><small>不确定时倾向 SAFE。漏检危险物品 −2 分；误拦普通行李 −10 分。</small></button>
+        </div>
+        <div class="option-group"><h3>02 · 刺激难度</h3>
+          <button class="choice difficulty selected" data-value="easy"><b>EASY</b><span>较清晰</span><small>目标相对明显，遮挡较少。</small></button>
+          <button class="choice difficulty" data-value="medium"><b>MEDIUM</b><span>部分遮挡</span><small>目标更小，并有普通物品遮挡。</small></button>
+          <button class="choice difficulty" data-value="hard"><b>HARD</b><span>短暂 + 高干扰</span><small>目标更小、遮挡更多、干扰更密集。</small></button>
+        </div>
+      </div>
+      <div class="parameter-strip"><div><strong>30</strong><span>正式 trials</span></div><div><strong>9 / 21</strong><span>Signal / Noise</span></div><div><strong>30%</strong><span>P(S)</span></div><div><strong>SAFE / CHECK</strong><span>二分类响应</span></div></div>
+      <div class="setup-actions"><button id="backHome" class="secondary-btn">← 返回</button><button id="startPractice" class="primary-btn">进入练习 →</button></div>
+    </div>
+  </section>
+
+  <!-- ==================== 练习阶段：3 个熟悉操作的 trial ==================== -->
+  <section id="screen-practice" class="screen">
+    <div class="topbar"><span>✈ 春日部机场</span><span>PRACTICE <b id="practiceCounter">1 / 3</b></span></div>
+    <div class="game-card">
+      <div class="mission"><span>TRAINING MODE</span><b id="practiceInstruction">先熟悉一下操作</b></div>
+      <div id="practiceScanner" class="scanner"></div>
+      <div id="practicePrompt" class="scan-prompt">扫描完成后，请判断这件行李是否需要进一步检查。</div>
+      <div class="answer-row"><button class="answer safe" data-answer="safe">SAFE <small>← 放行</small></button><button class="answer check" data-answer="check">CHECK <small>→ 检查</small></button></div>
+      <div id="practiceFeedback" class="feedback"></div>
+    </div>
+  </section>
+
+  <!-- ==================== 正式实验：30 个 SDT trial ==================== -->
+  <section id="screen-game" class="screen">
+    <div class="topbar"><span>✈ 春日部机场 · SECURITY CHECK</span><span>TRIAL <b id="trialCounter">1 / 30</b></span></div>
+    <div class="game-card">
+      <div class="status-row"><span id="strategyBadge">STRICT</span><span id="difficultyBadge">EASY</span><span>Signal base rate: <b>30%</b></span></div>
+      <div class="game-intro-strip">
+        <div class="game-mascot"><img src="assets/buriburi-transparent.png" alt="肥嘟嘟左卫门"><span>安检监督员</span></div>
+        <div><strong>目标：发现肥嘟嘟左卫门</strong><small>请观察 1.8 秒的扫描过程。扫描结束后再作出判断。</small><div class="strategy-live"><b id="strategyInstruction">安全优先：漏检危险物品的代价更高。</b><span id="strategyCost">漏检 −10｜误拦 −2</span></div></div>
+        <div class="live-score">本轮得分<strong id="liveScore">0</strong></div>
+      </div>
+      <div id="scanState" class="scan-state">行李正在进入扫描通道…</div>
+      <div id="scanner" class="scanner"></div>
+      <div id="responsePrompt" class="scan-prompt muted">请等待扫描完成</div>
+      <div class="answer-row"><button class="answer safe" data-answer="safe" disabled>SAFE <small>← 放行</small></button><button class="answer check" data-answer="check" disabled>CHECK <small>→ 检查</small></button></div>
+      <p class="keyboard-hint">扫描完成后：← SAFE　→ CHECK</p>
+    </div>
+  </section>
+
+  <!-- ==================== 结果页：SDT 指标、加分项与多轮比较 ==================== -->
+  <section id="screen-results" class="screen">
+    <div class="topbar"><span>✈ 春日部机场</span><span>SECURITY REPORT</span></div>
+    <div class="results-card">
+      <div class="result-header"><div><span class="eyebrow">SECURITY CHECK COMPLETE</span><h2>本轮安检报告</h2><p id="resultMeta" class="muted"></p></div><div class="stamp">CHECK<br>COMPLETE</div></div>
+      <div class="completion-banner"><span>✓</span><div><strong>30 / 30 行李检查完成</strong><small>你可以查看本轮 SDT 结果，也可以立即开始下一轮。</small></div></div>
+      <div class="metric-grid"><div><span>Hit</span><strong id="mHit">–</strong></div><div><span>Miss</span><strong id="mMiss">–</strong></div><div><span>False Alarm</span><strong id="mFA">–</strong></div><div><span>Correct Rejection</span><strong id="mCR">–</strong></div></div>
+      <div class="score-grid"><div><span>策略得分</span><strong id="mScore">–</strong><small>按本轮策略计算</small></div><div><span>漏检代价</span><strong id="mMissCost">–</strong></div><div><span>误拦代价</span><strong id="mFACost">–</strong></div></div>
+      <div class="rate-grid"><div><span>Hit Rate P(H)</span><strong id="mHR">–</strong></div><div><span>False Alarm Rate P(FA)</span><strong id="mFAR">–</strong></div><div><span>Overall Accuracy</span><strong id="mAccuracy">–</strong></div><div><span>Sensitivity d′</span><strong id="mDprime">–</strong></div><div><span>Criterion c</span><strong id="mC">–</strong></div></div>
+      <!-- 本轮实验结果：根据真实反应数据计算 -->
+      <div class="analysis-grid"><div class="chart-card"><h3>Signal / Noise evidence</h3><canvas id="distCanvas" width="620" height="250"></canvas><p class="chart-note">示意：根据本轮 d′ 与 c 展示 Signal/Noise 分布和决策标准。d′ 反映辨别能力，c 反映决策倾向。</p></div><div class="chart-card"><h3>Theoretical ROC</h3><canvas id="rocCanvas" width="620" height="250"></canvas><p class="chart-note">理论 ROC 用于展示不同决策标准下的敏感性—虚报权衡。</p></div></div>
+      <div class="strategy-note"><strong>为什么策略会影响结果？</strong><span>STRICT 把漏检的代价设得更高，FAST 把误拦的代价设得更高。策略不改变刺激本身的难度，而是改变“不确定时怎么选”，因此主要反映在决策标准 <b>c</b> 和最终任务得分上。</span></div>
+      <!-- 加分项：独立于正式实验的 SDT 概念交互演示 -->
+      <div class="bonus-card"><div><h3>互动概念可视化 · 独立于本轮实验</h3><p>这里是一个独立的 SDT 概念演示，不使用本轮实验的 d′、c 或反应数据。分别调节 <b>d′</b>（辨别能力）和 <b>c</b>（决策标准），观察 Signal / Noise 分布以及 ROC 曲线和当前决策点如何即时变化。</p><div class="concept-controls"><label>d′（辨别能力）：<input id="demoDSlider" type="range" min="0" max="3" step="0.05" value="1.50"><b id="demoDValue">1.50</b></label><label>Criterion c：<input id="criterionSlider" type="range" min="-2" max="2" step="0.05" value="0"><b id="criterionValue">0.00</b></label></div><div class="concept-readout"><span>理论 P(H) <b id="criterionHR">–</b></span><span>理论 P(FA) <b id="criterionFAR">–</b></span></div><div class="concept-chart-grid"><div><h4>Signal / Noise 分布</h4><canvas id="demoDistCanvas" width="620" height="240"></canvas></div><div><h4>ROC 曲线</h4><canvas id="demoROCCanvas" width="620" height="240"></canvas></div></div></div></div>
+      <!-- 加分项：localStorage 多轮数据比较 -->
+      <div class="history-card"><div class="history-head"><h3>多轮实验数据对比</h3><label>比较指标 <select id="compareMetric"><option value="d">d′</option><option value="c">c</option><option value="score">策略得分</option><option value="accuracy">准确率</option></select></label></div><canvas id="compareCanvas" width="1000" height="240"></canvas><div id="historyTable"></div></div>
+      <div class="result-actions"><button id="again" class="primary-btn">再进行一轮 →</button><button id="home" class="secondary-btn">返回首页</button></div>
+    </div>
+  </section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
