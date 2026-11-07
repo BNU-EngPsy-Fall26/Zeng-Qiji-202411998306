@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fffaf2">
+  <title>NORTHSTAR｜前线飞行注意实验室</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="返回首页" id="brandHome">
+      <span class="brand-mark">✈</span>
+      <span><strong>战术飞行 · 注意力实验室</strong></span>
+    </a>
+    <div class="topbar-right">
+      <span class="protocol-label"><i class="status-dot"></i> TACTICAL FLIGHT TRAINING</span>
+      <button class="icon-button" id="settingsBtn" title="项目设置" aria-label="项目设置">⚙</button>
+    </div>
+  </header>
+
+  <main id="appMain">
+    <!-- HOME -->
+    <section class="screen active" id="screen-home">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> ✈ 战术飞行训练</div>
+          <h1>编队巡航任务<br><em>飞行注意训练</em></h1>
+          <p class="hero-lede">完成两项飞行注意任务，检验预警方式与目标搜索方式对注意和判断的影响。</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" id="startMonitoring"><span>进入实验一</span><b>↗</b></button>
+            <button class="btn btn-secondary" id="startSearch"><span>进入实验二</span><b>↗</b></button>
+          </div>
+          <div class="hero-footnote"><span class="micro-dot"></span> 匿名参与 · 每项约 8–10 分钟 <span class="project-code-inline">项目码 <b>7WJ4J5</b></span></div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="radar-ring ring-one"></div><div class="radar-ring ring-two"></div>
+          <div class="radar-cross cross-x"></div><div class="radar-cross cross-y"></div>
+          <div class="flight-path"></div>
+          <div class="hero-plane">✈</div>
+          
+          
+          <div class="hero-visual-caption"><strong>保持航线 · 持续监控</strong></div>
+        </div>
+      </div>
+
+      <div class="section-heading"><div><span class="eyebrow">任务选择</span><h2>选择飞行任务</h2></div></div>
+      <div class="study-grid">
+        <article class="study-card study-card-one">
+          <div class="study-number">任务 01</div>
+          <div class="study-visual mini-gauges"><div class="mini-gauge"><i></i></div><div class="mini-gauge"><i></i></div><div class="mini-gauge"><i></i></div><div class="mini-gauge"><i></i></div></div>
+          <h3>预测性注意引导</h3>
+          <p>同时观察四个仪表，在异常出现时及时按下按钮。</p>
+          <div class="card-bottom"><span>仪表监控</span><button class="text-link" id="cardMonitoring">开始任务 →</button></div>
+        </article>
+        <article class="study-card study-card-two">
+          <div class="study-number">任务 02</div>
+          <div class="study-visual mini-display"><div class="mini-bars"><i></i><i></i><i></i></div><div class="mini-plot"><b></b></div></div>
+          <h3>视觉搜索与并行加工</h3>
+          <p>在干扰项中快速判断有没有目标，比较特征搜索与联合搜索的效率。</p>
+          <div class="card-bottom"><span>视觉搜索</span><button class="text-link" id="cardSearch">开始任务 →</button></div>
+        </article>
+      </div>
+
+      <div class="bottom-tools">
+        <div class="tool-copy"><span class="eyebrow">研究者入口</span><strong>数据分析</strong><small>导入课程平台数据，查看条件表现。</small></div>
+        <div class="tool-actions"><label class="btn btn-outline file-button">导入数据<input type="file" id="importData" accept=".csv,.json,application/json,text/csv"></label><button class="btn btn-quiet" id="openResults">打开数据分析 ↗</button></div>
+      </div>
+      <footer class="footer"><span>战术飞行模拟 · 注意实验室</span></footer>
+    </section>
+
+    <!-- SETUP -->
+    <section class="screen" id="screen-setup">
+      <div class="page-heading"><button class="back-link" id="backHome">← 返回任务选择</button><span class="eyebrow">出发前准备</span><h1 id="setupTitle">开始实验</h1><p id="setupSubtitle">请先填写匿名编号并阅读知情同意。</p></div>
+      <div class="setup-layout">
+        <div class="setup-main panel">
+          <div class="panel-heading"><span class="step-index">01</span><div><h2>参与者信息</h2><p>只填写匿名编号，不要填写姓名或学号。</p></div></div>
+          <label class="field-label" for="participantId">匿名被试编号 <span>必填</span></label>
+          <input class="text-input" id="participantId" maxlength="20" placeholder="例如 P01 / S001" autocomplete="off">
+          <div class="field-hint">两个实验请使用同一个编号。</div>
+          <div class="divider"></div>
+          <div class="panel-heading"><span class="step-index">02</span><div><h2>知情同意</h2><p>请阅读后自主决定是否参加。</p></div></div>
+          <div class="consent-copy">
+            <p>这是工程心理学课程注意实验。系统会记录匿名编号、任务选择和反应时间。参加完全自愿，你可以随时退出。</p>
+            <p>本实验不使用摄像头，也不需要安装任何插件或额外设备，在普通电脑浏览器中即可完成。</p>
+          </div>
+          <label class="check-row"><input type="checkbox" id="consentCheck"><span><strong>我已阅读上述说明，自愿参加本次实验。</strong><small>必选后才能继续</small></span></label>
+          <div class="field-label project-code-label">课程数据项目码 <span>已预设</span></div>
+          <input class="text-input" id="projectCode" maxlength="6" value="7WJ4J5" readonly autocomplete="off">
+          <div class="field-hint">本项目已配置项目码 7WJ4J5。下载密钥仅供研究者在课程收数页面下载数据，绝不能写入网页或 GitHub。</div>
+          <button class="btn btn-primary btn-wide" id="continueSetup">继续 <b>→</b></button>
+          <div class="form-error" id="setupError" role="alert"></div>
+        </div>
+        <aside class="setup-aside">
+          <div class="aside-card aside-dark"><span class="eyebrow">出发前小贴士</span><div class="aside-stat"><strong id="setupDuration">07–10</strong><span>分钟左右</span></div><p>请使用电脑完成任务，保持坐姿稳定。开始前会有练习。</p><div class="aside-list"><span>① <b>阅读说明</b></span><span>② <b>练习操作</b></span><span>③ <b>完成任务</b></span></div></div>
+          <div class="aside-note"><span class="tiny-shield">◇</span><div><strong>隐私提示</strong><p>本程序不会要求姓名或学号。项目下载密钥不写入前端。</p></div></div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- BRIEFING -->
+    <section class="screen" id="screen-briefing">
+      <div class="briefing-header"><button class="back-link" id="briefingBack">← 返回</button><span class="eyebrow" id="briefingCode">任务说明</span></div>
+      <div class="briefing-grid"><div class="briefing-copy"><h1 id="briefingTitle">飞行前简报</h1><p class="briefing-lede" id="briefingLead"></p><div class="briefing-instructions" id="briefingInstructions"></div><div class="briefing-actions"><button class="btn btn-primary" id="beginExperiment">开始实验 <b>→</b></button></div><p class="field-hint" id="briefingFootnote">确认后进入正式任务，开始前会先进行练习。</p></div><div class="briefing-side" id="briefingSide"></div></div>
+    </section>
+
+    <!-- TASK -->
+    <section class="screen" id="screen-task">
+      <div class="task-topline"><div class="task-brand"><span class="brand-mark small" id="taskBrandMark">✈</span><div><b id="taskBrandTitle">战机编队训练</b><small id="taskSubline">请看好仪表</small></div></div><div class="task-metadata"><span id="taskCondition">条件 A</span><span id="taskCounter">第 1 / 48 次</span></div></div>
+      <div class="task-progress"><div id="taskProgressBar"></div></div>
+      <div class="flightdeck-scene" id="flightdeckScene">
+        <canvas id="cockpit3d" aria-hidden="true"></canvas>
+        <div class="windshield"><div class="windshield-sky"><div class="sky-glow"></div><div class="sky-cloud cloud-a"></div><div class="sky-cloud cloud-b"></div><div class="horizon-line"></div><div class="distant-land"></div></div><div class="window-frame frame-left"></div><div class="window-frame frame-right"></div><div class="window-frame frame-top"></div></div>
+        <div class="cockpit-canopy canopy-left"></div><div class="cockpit-canopy canopy-right"></div>
+        <div class="flightdeck-status"><span class="status-pill"><i class="status-dot"></i><b id="liveStatus">正在监控</b></span><span class="altitude-readout" id="missionClock">航段 00 s</span></div><div class="ambient-event" id="ambientEvent" aria-live="polite"></div>
+        <div class="instrument-console" id="instrumentConsole">
+          <div class="console-top"><span id="consoleTitle">仪表监控</span><span id="searchLegend" class="rule-hint" hidden>目标：<i class="legend-swatch" data-color="red" data-orient="v"></i> 红色竖条</span></div>
+          <div class="gauge-grid" id="gaugeGrid">
+            <article class="gauge-card aoi" data-aoi="airspeed"><div class="gauge-head"><span class="gauge-index">01</span><span class="gauge-name">空速</span><span class="gauge-unit">KT</span></div><div class="gauge-body"><div class="dial-wrap"><svg class="dial-svg" viewBox="0 0 180 180" aria-hidden="true"><circle class="dial-rim" cx="90" cy="90" r="82"/><circle class="dial-face" cx="90" cy="90" r="74"/><path class="dial-scale" d="M31 132 A72 72 0 1 1 149 132"/><line class="dial-tick tick-low"/><line class="dial-tick tick-high"/><g class="dial-labels"><text class="tick-low-label"/><text class="tick-high-label"/></g><line class="dial-needle" x1="90" y1="96" x2="90" y2="31"/><circle class="dial-hub" cx="90" cy="96" r="7"/></svg></div><div class="gauge-reading"><strong id="value-airspeed">250</strong><small>正常 190–310</small></div></div></article>
+            <article class="gauge-card aoi" data-aoi="altitude"><div class="gauge-head"><span class="gauge-index">02</span><span class="gauge-name">高度</span><span class="gauge-unit">FT</span></div><div class="gauge-body"><div class="dial-wrap"><svg class="dial-svg" viewBox="0 0 180 180" aria-hidden="true"><circle class="dial-rim" cx="90" cy="90" r="82"/><circle class="dial-face" cx="90" cy="90" r="74"/><path class="dial-scale" d="M31 132 A72 72 0 1 1 149 132"/><line class="dial-tick tick-low"/><line class="dial-tick tick-high"/><g class="dial-labels"><text class="tick-low-label"/><text class="tick-high-label"/></g><line class="dial-needle" x1="90" y1="96" x2="90" y2="31"/><circle class="dial-hub" cx="90" cy="96" r="7"/></svg></div><div class="gauge-reading"><strong id="value-altitude">5000</strong><small>正常 3600–6400</small></div></div></article>
+            <article class="gauge-card aoi" data-aoi="bank"><div class="gauge-head"><span class="gauge-index">03</span><span class="gauge-name">横滚角</span><span class="gauge-unit">DEG</span></div><div class="gauge-body"><div class="dial-wrap"><svg class="dial-svg" viewBox="0 0 180 180" aria-hidden="true"><circle class="dial-rim" cx="90" cy="90" r="82"/><circle class="dial-face" cx="90" cy="90" r="74"/><path class="dial-scale" d="M31 132 A72 72 0 1 1 149 132"/><line class="dial-tick tick-low"/><line class="dial-tick tick-high"/><g class="dial-labels"><text class="tick-low-label"/><text class="tick-high-label"/></g><line class="dial-needle" x1="90" y1="96" x2="90" y2="31"/><circle class="dial-hub" cx="90" cy="96" r="7"/></svg></div><div class="gauge-reading"><strong id="value-bank">0</strong><small>正常 −18°至+18°</small></div></div></article>
+            <article class="gauge-card aoi" data-aoi="temperature"><div class="gauge-head"><span class="gauge-index">04</span><span class="gauge-name">发动机温度</span><span class="gauge-unit">°C</span></div><div class="gauge-body"><div class="dial-wrap"><svg class="dial-svg" viewBox="0 0 180 180" aria-hidden="true"><circle class="dial-rim" cx="90" cy="90" r="82"/><circle class="dial-face" cx="90" cy="90" r="74"/><path class="dial-scale" d="M31 132 A72 72 0 1 1 149 132"/><line class="dial-tick tick-low"/><line class="dial-tick tick-high"/><g class="dial-labels"><text class="tick-low-label"/><text class="tick-high-label"/></g><line class="dial-needle" x1="90" y1="96" x2="90" y2="31"/><circle class="dial-hub" cx="90" cy="96" r="7"/></svg></div><div class="gauge-reading"><strong id="value-temperature">680</strong><small>正常 560–790</small></div></div></article>
+          </div>
+          <div class="search-stage" id="searchStage" hidden>
+            <div class="search-head">
+              <span class="search-phase" id="searchPhase">准备</span>
+            </div>
+            <div class="search-field" id="searchField" role="img" aria-label="视觉搜索区域">
+              <div class="search-fixation" aria-hidden="true">+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="task-control-bar">
+        <div class="task-instruction"><span class="control-label">现在要做</span><strong id="taskPrompt">持续监控四个仪表。</strong><small id="taskSubPrompt">只有仪表数值越过红色阈值时，才报告异常。</small></div>
+        <div class="task-response" id="monitorResponse"><div class="response-hint"><kbd>空格</kbd> 或点击</div><button class="btn btn-alert" id="reportAnomaly">报告异常！</button></div>
+        <div class="task-response search-response" id="searchResponse" hidden>
+          <div class="response-hint"><kbd>F</kbd> 有目标 <kbd>J</kbd> 无目标</div>
+          <div class="response-options" id="searchOptions">
+            <button class="response-option" data-value="present" disabled>有目标</button>
+            <button class="response-option" data-value="absent" disabled>无目标</button>
+          </div>
+        </div>
+      </div>
+      <div class="task-footer"><span id="taskParticipant">PARTICIPANT —</span><button id="exitExperiment" class="abort-link">退出实验</button></div>
+    </section>
+
+    <!-- BLOCK BREAK -->
+    <section class="screen" id="screen-break">
+      <div class="break-card panel"><span class="eyebrow">休息一下</span><div class="break-icon">✈</div><h1 id="breakTitle">阶段完成</h1><p id="breakMessage">请稍作休息，下一阶段即将开始。</p><div class="break-progress" id="breakProgress"></div><button type="button" class="btn btn-primary" id="continueBlock">开始下一组 →</button></div>
+    </section>
+
+    <!-- RESULTS -->
+    <section class="screen" id="screen-session-results">
+      <div class="results-head"><span class="eyebrow">本次结果</span><h1 id="sessionResultTitle">任务完成</h1><p id="sessionResultText">本次实验记录已生成。</p></div>
+      <div class="result-stats" id="sessionStats"></div>
+      <div class="session-model" id="sessionModel"></div>
+      <div class="result-actions"><button class="btn btn-primary" id="submitDataBtn">提交至注意实验室 <b>↗</b></button><button class="btn btn-secondary" id="downloadCsvBtn">下载 CSV</button><button class="btn btn-outline" id="downloadJsonBtn">下载 JSON</button><button class="btn btn-quiet" id="homeAfterResults">返回首页</button></div>
+      <div class="submit-status" id="submitStatus" role="status"></div>
+      <div class="results-note"><strong>研究解释边界</strong><p id="sessionInterpretation"></p></div>
+    </section>
+
+    <!-- GROUP RESULTS -->
+    <section class="screen" id="screen-results">
+      <div class="page-heading"><button class="back-link" id="resultsHome">← 返回首页</button><span class="eyebrow">DATA ANALYSIS / GROUP REPORT</span><h1>数据与效应分析</h1><p>导入注意实验室下载的 CSV 或 JSON，或查看当前浏览器中保留的本地实验记录。</p></div>
+      <div class="results-toolbar panel"><div><strong>数据来源</strong><small id="dataSourceLabel">当前浏览器本地记录</small></div><div class="toolbar-actions"><label class="btn btn-outline file-button">导入 CSV / JSON<input type="file" id="resultsImport" accept=".csv,.json,application/json,text/csv"></label><button class="btn btn-quiet" id="clearImported">清除导入数据</button></div></div>
+      <div class="data-overview" id="dataOverview"></div>
+      <div class="analysis-grid">
+        <article class="panel analysis-panel"><div class="panel-heading"><span class="step-index">01</span><div><h2>实验一 · 仪表监控</h2><p>命中率、虚报率、SDT 与 SEEV 模型对照</p></div></div><div id="monitorAnalysis"></div></article>
+        <article class="panel analysis-panel"><div class="panel-heading"><span class="step-index">02</span><div><h2>实验二 · 视觉搜索</h2><p>正确率、反应时斜率与线性模型拟合</p></div></div><div id="searchAnalysis"></div></article>
+      </div>
+      <div class="results-note"><strong>与原论文比较时的边界</strong><p>实验一是 Senders 多仪表监控逻辑的网页改编版，并未复现原研究的眼动设备、随机信号带宽和全部分析，因此不将本实验的点击反应直接等同于视觉采样频率。实验二采用 Treisman 与 Gelade（1980）的特征／联合搜索任务，操纵搜索集大小并以反应时斜率作为并行加工的指标；新增的预览条件是依据 Watson 与 Humphreys（1997）视觉标记研究设计的改进，并非原论文条件，不能把本项目斜率直接等同于原论文数值。报告应比较效应方向与任务逻辑，并说明刺激材料、呈现设备和样本量的差异。</p></div>
+      <div class="result-actions"><button class="btn btn-primary" id="downloadAnalysis">下载分析汇总 CSV</button><button class="btn btn-quiet" id="resultsHomeBottom">返回首页</button></div>
+    </section>
+
+    <!-- SETTINGS -->
+    <dialog id="settingsDialog" class="settings-dialog"><form method="dialog"><div class="dialog-head"><span class="eyebrow">PROJECT CONFIGURATION</span><button class="icon-button" aria-label="关闭">×</button></div><h2>课程项目设置</h2><p>当前项目码为 7WJ4J5，用于将每个被试完成的实验提交到课程注意实验室。下载密钥仅用于研究者在课程网页下载数据，不能放在本网站。</p><label class="field-label" for="settingsProjectCode">六位项目码</label><input class="text-input" id="settingsProjectCode" maxlength="6" value="7WJ4J5" readonly><div class="dialog-actions"><button class="btn btn-quiet" value="cancel">取消</button><button class="btn btn-primary" id="saveSettings" value="save">保存</button></div><p class="field-hint">项目码已预设为 7WJ4J5。若接口暂时不可用，仍可下载 CSV / JSON 作为备份。</p></form></dialog>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="js/core.js"></script>
+  <script src="js/monitoring.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/cockpit3d.js"></script>
+  <script src="js/analysis.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

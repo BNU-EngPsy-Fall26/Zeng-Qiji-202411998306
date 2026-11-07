@@ -1,0 +1,631 @@
+:root{--ink:#14212c;--muted:#71808c;--paper:#f2f4f4;--panel:#fbfcfb;--line:#d9e0e1;--navy:#142532;--navy2:#1e3444;--gold:#c5a65c;--mint:#a9c9bd;--cyan:#8db9c4;--amber:#e6aa51;--red:#d46b5d;--green:#70a590;--mono:'DM Mono',monospace;--sans:'Manrope','Noto Sans SC',sans-serif;--shadow:0 24px 70px rgba(10,23,32,.1)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);min-height:100vh;overflow-x:hidden}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid #84b2bd;outline-offset:3px}.ambient{position:fixed;z-index:-1;pointer-events:none;border-radius:50%;filter:blur(2px)}.ambient-a{width:540px;height:540px;right:-240px;top:80px;background:radial-gradient(circle,rgba(187,209,204,.35),transparent 68%)}.ambient-b{width:440px;height:440px;left:-250px;bottom:-180px;background:radial-gradient(circle,rgba(219,204,165,.2),transparent 70%)}
+.topbar{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(22px,5vw,76px);border-bottom:1px solid rgba(20,37,50,.09);background:rgba(246,248,247,.76);backdrop-filter:blur(16px);position:sticky;top:0;z-index:40}.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}.brand-mark{width:34px;height:34px;display:grid;place-items:center;border:1px solid var(--gold);border-radius:10px;color:#a1813f;font-family:var(--mono);font-weight:500;font-size:17px;box-shadow:inset 0 0 0 3px rgba(197,166,92,.12)}.brand-mark.small{width:27px;height:27px;border-radius:7px;font-size:13px}.brand strong{display:block;font-size:12px;letter-spacing:.2em;font-weight:800}.brand small{display:block;margin-top:3px;font:9px var(--mono);letter-spacing:.17em;color:var(--muted)}.topbar-right{display:flex;align-items:center;gap:20px}.protocol-label{font:10px var(--mono);letter-spacing:.14em;color:#63727b}.status-dot,.micro-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#6fa58f;box-shadow:0 0 0 4px rgba(111,165,143,.13);margin-right:8px}.icon-button{width:34px;height:34px;border-radius:9px;border:1px solid var(--line);background:#fff;color:#63727b;font-size:17px;display:grid;place-items:center}
+#appMain{max-width:1440px;margin:0 auto;padding:0 clamp(22px,5vw,76px) 50px}.screen{display:none;animation:screenIn .45s ease both}.screen.active{display:block}@keyframes screenIn{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}.eyebrow{font:10px var(--mono);letter-spacing:.19em;color:#a18448}.eyebrow-line{display:inline-block;width:27px;height:1px;background:var(--gold);vertical-align:middle;margin-right:10px}.hero-grid{display:grid;grid-template-columns:1fr .95fr;gap:54px;align-items:center;padding:65px 0 67px;min-height:430px}.hero-copy{padding:10px 0}.hero-copy h1{font-size:clamp(40px,5vw,68px);line-height:1.17;letter-spacing:-.045em;font-weight:700;margin:24px 0 17px}.hero-copy h1 em{font-style:normal;color:#9a7e45}.hero-lede{font-size:14px;line-height:1.95;color:#6a7780;max-width:530px}.hero-actions{display:flex;gap:12px;margin-top:30px}.btn{border:0;border-radius:8px;padding:0 19px;height:46px;display:inline-flex;align-items:center;justify-content:center;gap:22px;font-size:12px;font-weight:700;letter-spacing:.02em;transition:transform .2s,box-shadow .2s,background .2s}.btn:hover{transform:translateY(-2px);box-shadow:0 9px 22px rgba(12,31,43,.13)}.btn b{font:16px var(--mono);font-weight:400}.btn-primary{background:var(--navy);color:#fff;box-shadow:0 6px 14px rgba(20,37,50,.15)}.btn-primary:hover{background:#233e51}.btn-secondary{background:#e4ebe9;color:#294251;border:1px solid #d2ddda}.btn-outline{background:transparent;border:1px solid #b7c5c7;color:#354f5c}.btn-quiet{background:transparent;color:#75848c;border:1px solid transparent}.btn-wide{width:100%;margin-top:25px}.hero-footnote{margin-top:20px;color:#8a969b;font:10px var(--mono);letter-spacing:.05em}.project-code-inline{display:inline-flex;align-items:center;gap:7px;margin-left:10px;padding:4px 8px;border:1px solid rgba(161,129,63,.28);border-radius:5px;color:#9b8049;font-size:9px;letter-spacing:.1em;background:rgba(197,166,92,.07)}.project-code-inline b{font-size:10px;color:#6e5a31;letter-spacing:.15em}.micro-dot{width:5px;height:5px;margin-right:8px;background:var(--gold);box-shadow:none}
+.hero-visual{height:330px;position:relative;border-radius:17px;overflow:hidden;background:radial-gradient(circle at 57% 45%,rgba(161,185,184,.17),transparent 33%),linear-gradient(135deg,#263c48 0%,#142a37 44%,#101e28 100%);box-shadow:0 22px 52px rgba(15,31,42,.17);border:1px solid rgba(255,255,255,.28)}.hero-visual:before{content:"";position:absolute;inset:13px;border:1px solid rgba(213,197,153,.23);border-radius:12px}.hero-visual:after{content:"";position:absolute;width:80%;height:1px;left:10%;top:50%;background:linear-gradient(90deg,transparent,rgba(202,186,145,.26),transparent)}.radar-ring{position:absolute;border:1px solid rgba(166,195,192,.19);border-radius:50%;left:50%;top:48%;transform:translate(-50%,-50%)}.ring-one{width:230px;height:230px}.ring-two{width:310px;height:310px}.radar-cross{position:absolute;background:rgba(166,195,192,.13)}.cross-x{height:1px;width:90%;top:48%;left:5%}.cross-y{width:1px;height:90%;left:50%;top:5%}.flight-path{position:absolute;width:230px;height:125px;border-top:1px dashed rgba(202,186,145,.7);border-radius:50%;left:38%;top:27%;transform:rotate(-27deg)}.hero-plane{position:absolute;left:58%;top:28%;color:#d8c494;font-size:24px;transform:rotate(40deg);text-shadow:0 0 19px rgba(206,180,123,.55)}.hero-coordinate{position:absolute;color:rgba(222,231,224,.7);font:9px/1.7 var(--mono);letter-spacing:.08em}.coord-a{top:25px;left:27px}.coord-b{bottom:27px;right:28px;text-align:right}.hero-visual-caption{position:absolute;bottom:23px;left:27px;color:#d9e3df}.hero-visual-caption span{display:block;font:8px var(--mono);letter-spacing:.18em;color:#a7c4bd}.hero-visual-caption strong{display:block;font:25px var(--mono);margin:4px 0}.hero-visual-caption small{font:8px var(--mono);letter-spacing:.15em;color:#849aa0}
+.section-heading{display:flex;align-items:end;justify-content:space-between;margin:0 0 20px}.section-heading h2{font-size:23px;margin:7px 0 0;letter-spacing:-.03em}.section-meta{font:9px var(--mono);letter-spacing:.14em;color:#8e9a9c;padding-bottom:5px}.study-grid{display:grid;grid-template-columns:1fr 1fr;gap:17px}.study-card{min-height:252px;border:1px solid #d9e1e0;border-radius:13px;background:rgba(255,255,255,.63);padding:22px 25px 18px;position:relative;overflow:hidden}.study-card:after{content:"";position:absolute;width:220px;height:220px;right:-90px;top:-90px;border-radius:50%;background:radial-gradient(circle,rgba(197,166,92,.12),transparent 70%);pointer-events:none}.study-number{font:13px var(--mono);color:#9c7e42;letter-spacing:.04em}.study-number span{font:9px var(--mono);color:#91a0a4;margin-left:9px;letter-spacing:.13em}.study-card h3{font-size:19px;letter-spacing:-.03em;margin:7px 0 5px}.study-card p{max-width:500px;color:#7b888e;font-size:12px;line-height:1.7;margin:0 0 17px}.card-bottom{border-top:1px solid #e3e8e7;padding-top:13px;display:flex;justify-content:space-between;align-items:center;color:#99a4a7;font:9px var(--mono);letter-spacing:.08em}.text-link{border:0;background:transparent;color:#8a7449;font-size:11px;font-weight:700}.mini-gauges{display:flex;gap:8px;margin:14px 0 3px}.mini-gauge{width:28px;height:28px;border-radius:50%;background:radial-gradient(circle at 50% 50%,#344b59 0 55%,#172d3a 58% 68%,#b59a60 70% 74%,#172d3a 76%);position:relative}.mini-gauge i{position:absolute;width:1px;height:10px;background:#e6d6af;left:50%;top:6px;transform:rotate(23deg);transform-origin:bottom}.mini-display{height:42px;display:flex;align-items:center;gap:16px;margin:7px 0 0}.mini-bars{display:flex;gap:5px;align-items:end;height:28px}.mini-bars i{display:block;width:6px;border-radius:3px;background:#698f90}.mini-bars i:nth-child(1){height:14px}.mini-bars i:nth-child(2){height:24px}.mini-bars i:nth-child(3){height:19px}.mini-plot{width:40px;height:28px;border-left:1px solid #8ea4a2;border-bottom:1px solid #8ea4a2;position:relative}.mini-plot:before{content:"";position:absolute;left:3px;bottom:5px;width:33px;height:15px;border:1px solid #c0a45e;transform:skew(-30deg) rotate(-15deg);border-radius:50%}.mini-plot b{position:absolute;left:21px;bottom:10px;width:5px;height:5px;border-radius:50%;background:#c0a45e}
+.bottom-tools{display:flex;align-items:center;justify-content:space-between;margin-top:22px;padding:18px 22px;background:#e8eeec;border:1px solid #dce5e2;border-radius:11px}.tool-copy strong{display:block;margin:6px 0 3px;font-size:14px}.tool-copy small{color:#79868b;font-size:11px}.tool-actions{display:flex;gap:9px}.file-button{position:relative;overflow:hidden;gap:8px}.file-button input{position:absolute;inset:0;opacity:0;cursor:pointer}.footer{display:flex;justify-content:space-between;color:#a2adaf;font:8px var(--mono);letter-spacing:.13em;padding-top:28px}
+.page-heading{padding:42px 0 23px}.back-link{border:0;background:none;padding:0;color:#859197;font-size:11px;margin-bottom:24px}.page-heading h1{font-size:37px;letter-spacing:-.045em;margin:10px 0 8px}.page-heading p{font-size:13px;color:#7f8b90;margin:0}.setup-layout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(270px,.72fr);gap:20px;align-items:start}.panel{background:rgba(255,255,255,.78);border:1px solid #dce3e2;border-radius:13px;box-shadow:0 12px 35px rgba(20,40,50,.045)}.setup-main{padding:27px 30px}.panel-heading{display:flex;align-items:center;gap:13px;margin-bottom:18px}.panel-heading h2{font-size:16px;margin:0 0 4px}.panel-heading p{margin:0;color:#89969a;font-size:11px}.step-index{width:32px;height:32px;border:1px solid #d0c39e;border-radius:9px;display:grid;place-items:center;color:#9b8049;font:11px var(--mono)}.field-label{display:block;font-size:11px;font-weight:700;margin:16px 0 8px}.field-label span{float:right;color:#a18448;font:9px var(--mono);letter-spacing:.08em}.text-input{height:43px;border:1px solid #d4dddc;border-radius:7px;background:#fff;width:100%;padding:0 13px;font-size:12px;color:var(--ink)}.text-input:focus{outline:2px solid rgba(126,168,172,.35);border-color:#8cb3b6}.field-hint{font-size:10px;color:#9aa5a8;line-height:1.6;margin-top:7px}.divider{height:1px;background:#e6ebea;margin:23px 0}.consent-copy{background:#f3f6f5;padding:15px 17px;border-radius:8px;border:1px solid #e5ebea;color:#6f7c81;font-size:11px;line-height:1.85}.consent-copy p{margin:0 0 9px}.consent-copy p:last-child{margin:0}.check-row{display:flex;align-items:flex-start;gap:10px;margin-top:15px;font-size:11px;cursor:pointer}.check-row input{margin-top:2px;accent-color:#375c66}.check-row small{display:block;color:#98a2a4;font-size:9px;margin-top:3px}.optional-check{margin-bottom:17px}.project-code-label{margin-top:11px}.setup-aside{display:flex;flex-direction:column;gap:13px}.aside-card{border-radius:13px;padding:24px}.aside-dark{background:linear-gradient(145deg,#1e3846,#10232e);color:#ecf1ec;min-height:300px;box-shadow:0 15px 35px rgba(15,35,47,.15)}.aside-dark .eyebrow{color:#c4ad75}.aside-stat{display:flex;align-items:end;gap:9px;margin:21px 0 7px}.aside-stat strong{font:34px var(--mono);color:#d8c28b}.aside-stat span{font:9px var(--mono);color:#a0b1b2;margin-bottom:7px}.aside-dark p{font-size:11px;line-height:1.8;color:#b5c4c4;margin:0 0 19px}.aside-list{display:grid;grid-template-columns:1fr 1fr;gap:10px 13px;border-top:1px solid rgba(255,255,255,.12);padding-top:16px}.aside-list span{font:9px var(--mono);color:#91aaa9}.aside-list b{font:10px var(--sans);color:#edf0e8;margin-left:4px}.aside-note{display:flex;gap:12px;background:#e8eeeb;padding:16px;border-radius:10px;color:#5e747b}.tiny-shield{font-size:19px;color:#a78a4d}.aside-note strong{font-size:11px}.aside-note p{font-size:10px;color:#849194;line-height:1.7;margin:4px 0 0}.form-error{color:#b54d43;font-size:11px;margin-top:10px;min-height:15px}
+.briefing-header{padding:28px 0 0;display:flex;flex-direction:column}.briefing-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:30px;padding:22px 0 50px}.briefing-copy h1{font-size:42px;letter-spacing:-.05em;margin:12px 0}.briefing-lede{max-width:650px;color:#75838a;font-size:14px;line-height:1.8}.briefing-instructions{margin-top:25px}.briefing-instructions h3{font-size:14px;margin:18px 0 8px}.briefing-instructions p,.briefing-instructions li{font-size:12px;line-height:1.9;color:#748289}.briefing-instructions ul{padding-left:18px}.threshold-table{width:100%;border-collapse:collapse;margin:15px 0 19px;background:rgba(255,255,255,.55);border-radius:8px;overflow:hidden}.threshold-table th,.threshold-table td{text-align:left;padding:10px 12px;border-bottom:1px solid #e3e9e7;font-size:10px}.threshold-table th{font:9px var(--mono);letter-spacing:.08em;color:#9a804b;background:#f4f2eb}.threshold-table td{color:#596a73}.threshold-table tr:last-child td{border:0}.briefing-actions{display:flex;gap:10px;margin-top:22px}.briefing-footnote{font-size:10px;color:#9ba6a8}.briefing-side{border-radius:14px;background:linear-gradient(140deg,#18313e,#0f202a);color:white;min-height:360px;padding:26px;position:relative;overflow:hidden;box-shadow:var(--shadow)}.briefing-side:after{content:"";position:absolute;width:380px;height:380px;border:1px solid rgba(197,166,92,.2);border-radius:50%;right:-160px;bottom:-210px;box-shadow:0 0 0 24px rgba(197,166,92,.035),0 0 0 56px rgba(197,166,92,.025)}.briefing-side .side-stat{position:relative;z-index:1;margin-top:65px}.side-stat strong{font:45px var(--mono);display:block;color:#ddc78d}.side-stat span{font:9px var(--mono);color:#a4b9b8;letter-spacing:.15em}.briefing-side p{position:relative;z-index:1;max-width:280px;font-size:11px;color:#b2c1c2;line-height:1.8}.briefing-side .eyebrow{color:#c6b17b}.briefing-side .side-lines{border-top:1px solid rgba(255,255,255,.13);padding-top:16px;position:relative;z-index:1;margin-top:25px;display:flex;justify-content:space-between;font:9px var(--mono);color:#91a9aa}
+.calibration-panel{padding:22px;margin-bottom:60px}.calibration-top,.calibration-bottom{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#77868a}.calibration-stage{height:350px;margin:15px 0;position:relative;background:linear-gradient(135deg,#edf2f0,#f8f9f7);border:1px solid #e0e7e4;border-radius:9px}.cal-point{position:absolute;width:16px;height:16px;border-radius:50%;border:3px solid #fff;background:#b08d48;box-shadow:0 0 0 2px #b08d48;transform:translate(-50%,-50%);display:none}.cal-point.active{display:block;animation:pulsePoint 1s infinite}.cal-point.done{display:block;background:#659b82;box-shadow:0 0 0 2px #659b82}.cal-point:nth-child(1){left:8%;top:10%}.cal-point:nth-child(2){left:50%;top:10%}.cal-point:nth-child(3){left:92%;top:10%}.cal-point:nth-child(4){left:8%;top:50%}.cal-point:nth-child(5){left:50%;top:50%}.cal-point:nth-child(6){left:92%;top:50%}.cal-point:nth-child(7){left:8%;top:90%}.cal-point:nth-child(8){left:50%;top:90%}.cal-point:nth-child(9){left:92%;top:90%}@keyframes pulsePoint{50%{box-shadow:0 0 0 8px rgba(176,141,72,.18)}}.calibration-bottom p{max-width:560px;font-size:10px;color:#98a3a5}
+/* Flight deck */
+#screen-task{padding-top:19px}.task-topline{display:flex;justify-content:space-between;align-items:center;padding:0 0 11px}.task-brand{display:flex;align-items:center;gap:10px}.task-brand b{display:block;font:10px var(--mono);letter-spacing:.13em}.task-brand small{display:block;margin-top:4px;color:#89969b;font:8px var(--mono);letter-spacing:.1em}.task-metadata{display:flex;gap:18px;color:#849298;font:9px var(--mono);letter-spacing:.1em}.task-progress{height:3px;background:#dbe3e0;border-radius:10px;overflow:hidden;margin-bottom:16px}.task-progress div{height:100%;width:0;background:linear-gradient(90deg,#a8905e,#769c91);transition:width .2s}.flightdeck-scene{height:min(67vh,650px);min-height:515px;position:relative;overflow:hidden;border-radius:16px;background:linear-gradient(180deg,#192f3d 0%,#1b3642 45%,#15252f 100%);box-shadow:0 24px 55px rgba(13,30,40,.22);border:1px solid rgba(19,38,49,.4);isolation:isolate}.windshield{position:absolute;left:5%;right:5%;top:0;height:42%;clip-path:polygon(7% 0,93% 0,100% 100%,0 100%);overflow:hidden;border-left:7px solid #091720;border-right:7px solid #091720;border-bottom:9px solid #0b1b25;background:#89a9ab}.windshield-sky{position:absolute;inset:0;background:linear-gradient(180deg,#aec9ca 0%,#95b6ba 37%,#c6c9b5 67%,#7d958c 100%);overflow:hidden}.sky-glow{position:absolute;width:360px;height:150px;left:35%;top:18%;border-radius:50%;background:radial-gradient(ellipse,rgba(255,237,198,.75),transparent 68%)}.sky-cloud{position:absolute;background:rgba(246,248,231,.28);filter:blur(12px);border-radius:50%}.cloud-a{width:310px;height:65px;left:7%;top:35%}.cloud-b{width:260px;height:52px;right:9%;top:26%}.horizon-line{position:absolute;bottom:21%;left:0;right:0;height:2px;background:rgba(220,226,208,.46);box-shadow:0 6px 20px rgba(46,68,59,.22)}.distant-land{position:absolute;bottom:0;left:0;right:0;height:21%;background:linear-gradient(170deg,transparent 0 12%,rgba(77,103,91,.28) 13% 100%)}.window-frame{position:absolute;z-index:2;background:linear-gradient(90deg,#07151e,#263d49 48%,#081721);box-shadow:inset 0 0 0 1px rgba(201,185,148,.17)}.frame-left{top:0;left:4.5%;width:13px;height:42%;transform:skew(-10deg)}.frame-right{top:0;right:4.5%;width:13px;height:42%;transform:skew(10deg)}.frame-top{top:0;left:10%;right:10%;height:9px}.cockpit-canopy{position:absolute;z-index:3;top:0;bottom:0;width:12%;background:linear-gradient(90deg,#07151d,#182e3a 25%,rgba(18,37,49,.2) 100%);opacity:.92}.canopy-left{left:0;clip-path:polygon(0 0,100% 0,38% 100%,0 100%)}.canopy-right{right:0;transform:scaleX(-1);clip-path:polygon(0 0,100% 0,38% 100%,0 100%)}.flightdeck-status{position:absolute;top:15px;left:24px;right:24px;z-index:5;display:flex;align-items:center;justify-content:space-between}.status-pill{padding:7px 10px;border:1px solid rgba(255,255,255,.22);background:rgba(13,30,39,.45);backdrop-filter:blur(6px);border-radius:30px;color:#dbe5df;font:8px var(--mono);letter-spacing:.12em}.status-pill .status-dot{width:5px;height:5px;margin-right:7px}.altitude-readout{font:8px var(--mono);letter-spacing:.1em;color:rgba(255,255,255,.68)}.instrument-console{position:absolute;left:5%;right:5%;bottom:3.5%;z-index:4;min-height:64%;background:linear-gradient(160deg,#273d4a 0%,#101e28 52%,#0a1720 100%);border:1px solid rgba(190,173,133,.46);border-radius:17px 17px 13px 13px;box-shadow:0 22px 48px rgba(1,7,12,.55),inset 0 2px 3px rgba(255,255,255,.14),inset 0 -8px 16px rgba(0,0,0,.25);padding:13px 17px 10px;transform:perspective(1100px) rotateX(2deg);transform-origin:bottom}.instrument-console:before{content:"";position:absolute;left:0;right:0;top:0;height:5px;border-radius:17px 17px 0 0;background:linear-gradient(90deg,#1d313e,#b39b65,#263d49)}.console-top,.console-bottom{display:flex;justify-content:space-between;align-items:center;color:#8da4a8;font:8px var(--mono);letter-spacing:.13em}.console-top{padding:4px 3px 9px}.console-top i{color:#c4aa68;font-style:normal}.gauge-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:stretch}.gauge-card{border:1px solid rgba(183,198,193,.19);border-radius:9px;background:linear-gradient(145deg,rgba(12,27,36,.83),rgba(28,45,54,.87));padding:9px 8px 8px;position:relative;transition:border-color .15s,box-shadow .15s}.gauge-card:after{content:"";position:absolute;inset:3px;border-radius:6px;border:1px solid rgba(255,255,255,.035);pointer-events:none}.gauge-head{display:flex;align-items:center;gap:6px;color:#d1dcd7}.gauge-index{font:8px var(--mono);color:#9e8c5f}.gauge-name{font:8px var(--mono);letter-spacing:.12em;white-space:nowrap}.gauge-unit{margin-left:auto;color:#839a9e;font:7px var(--mono)}.gauge-body{display:flex;align-items:center;justify-content:center;gap:5px;margin-top:3px}.dial-wrap{width:min(49%,140px);min-width:92px}.dial-svg{width:100%;display:block;overflow:visible}.dial-rim{fill:#101d25;stroke:#917d50;stroke-width:3}.dial-face{fill:url(#none);fill:#1d303b;stroke:#52636a;stroke-width:1}.dial-scale{fill:none;stroke:#9aa8a3;stroke-width:2;opacity:.8}.dial-tick{fill:none;stroke:#d46b5d;stroke-width:3;stroke-linecap:round}.dial-labels text{fill:#e1a69d;font:7px var(--mono)}.dial-labels{fill:#b6c2ba;font:8px var(--mono)}.dial-needle{stroke:#e8cf92;stroke-width:2.4;stroke-linecap:round;transform-origin:90px 96px;filter:drop-shadow(0 0 3px rgba(232,207,146,.3))}.dial-hub{fill:#d5bd82;stroke:#4c5c5c;stroke-width:2}.gauge-reading{min-width:0}.gauge-reading strong{display:block;color:#edf0df;font:clamp(13px,1.5vw,20px) var(--mono);white-space:nowrap}.gauge-reading small{display:block;margin-top:6px;color:#8da4a2;font:7px var(--mono);white-space:nowrap;letter-spacing:-.02em}.gauge-card.cued{border-color:#e1ab58;box-shadow:0 0 0 2px rgba(230,170,81,.25),0 0 24px rgba(230,170,81,.17)}.gauge-card.actual-alert{border-color:#cf6a5c;box-shadow:0 0 0 2px rgba(207,106,92,.23),0 0 23px rgba(207,106,92,.17)}.console-bottom{padding:8px 3px 0;color:#7d9298;font-size:7px}.task-control-bar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:15px 19px;margin-top:12px;border:1px solid #d9e1df;border-radius:12px;background:rgba(255,255,255,.74)}.task-instruction{display:flex;flex-direction:column;gap:4px}.control-label{font:8px var(--mono);letter-spacing:.14em;color:#a18448}.task-instruction strong{font-size:13px}.task-instruction small{font-size:10px;color:#849196}.task-response{display:flex;align-items:center;gap:12px}.response-hint{font:8px var(--mono);color:#a0abad;letter-spacing:.1em}.response-hint kbd{border:1px solid #cfd8d5;border-radius:4px;padding:4px 7px;background:#f6f8f6;color:#65777e}.btn-alert{background:#9f5549;color:white;min-width:150px}.btn-alert:hover{background:#b65f51}.pcp-response{flex-wrap:wrap}.response-options{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}.response-option{min-width:57px;height:36px;padding:0 12px;border:1px solid #cbd7d4;border-radius:7px;background:#f9fbfa;color:#354d58;font:11px var(--mono)}.response-option:hover{border-color:#aa9158;background:#f5f0e4}.task-footer{display:flex;justify-content:space-between;align-items:center;margin-top:10px;color:#9ba7a9;font:8px var(--mono);letter-spacing:.08em}.abort-link{border:0;background:none;color:#a26b62;font:9px var(--mono)}
+/* PCP */
+.pcp-display{min-height:240px;display:flex;align-items:center;justify-content:center;gap:14px;padding:14px 16px}.separate-display{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.variable-card{border:1px solid rgba(181,195,190,.22);background:linear-gradient(145deg,#172c38,#253e4a);border-radius:9px;padding:13px 12px;color:#edf0e6;min-height:166px;display:flex;flex-direction:column;justify-content:space-between}.variable-card span{font:8px var(--mono);letter-spacing:.12em;color:#a0b5b0}.variable-card strong{font:28px var(--mono);color:#eddaa3}.variable-card small{font:8px var(--mono);color:#90a5a5}.variable-bar{height:5px;border-radius:5px;background:#344b54;overflow:hidden}.variable-bar i{display:block;height:100%;background:linear-gradient(90deg,#7fa69b,#cfb777);border-radius:5px}.integrated-display{width:100%;max-width:600px;display:grid;grid-template-columns:1fr 150px;gap:18px;align-items:center}.integration-plot{width:100%;height:220px;background:linear-gradient(145deg,#172d39,#213b47);border:1px solid rgba(178,196,190,.25);border-radius:10px;padding:11px;position:relative}.integration-plot svg{width:100%;height:100%;display:block}.plot-axis{stroke:#a5b6b0;stroke-width:1;opacity:.75}.plot-grid{stroke:#607981;stroke-width:.7;stroke-dasharray:3 4;opacity:.55}.plot-point{fill:#e2c47b;stroke:#f6ebcb;stroke-width:2}.plot-point.flap-0{fill:#d9a85e}.plot-point.flap-10{fill:#82b6b1}.plot-point.flap-20{fill:#b8aacd}.plot-label{fill:#c4d1c9;font:9px var(--mono)}.integrated-key{display:flex;flex-direction:column;gap:12px;color:#b8c8c3;font-size:9px}.integrated-key strong{display:block;color:#e7d49b;font:17px var(--mono);margin-top:4px}.key-symbol{display:inline-block;width:9px;height:9px;margin-right:6px;background:#d9a85e;border-radius:50%}.key-symbol.flap-10{background:#82b6b1}.key-symbol.flap-20{background:#b8aacd;border-radius:2px}.pcp-prompt-label{display:inline-flex;align-items:center;gap:7px;font:9px var(--mono);letter-spacing:.12em;color:#a18448}.pcp-prompt-label:before{content:"";width:6px;height:6px;background:#b69859;border-radius:50%}
+/* Break & results */
+#screen-break{min-height:65vh;display:none;place-items:center}#screen-break.active{display:grid}.break-card{max-width:600px;width:100%;padding:38px;text-align:center}.break-card h1{font-size:34px;letter-spacing:-.04em;margin:11px 0}.break-card p{font-size:12px;color:#7f8c91;line-height:1.8}.break-icon{font-size:30px;color:#b69a60;margin-top:26px}.break-progress{display:flex;justify-content:center;gap:7px;margin:25px}.break-progress i{display:block;width:30px;height:4px;border-radius:4px;background:#b1c8be}.break-progress i.pending{background:#e0e7e3}.break-card .btn{min-width:160px}.results-head{padding:50px 0 23px}.results-head h1{font-size:42px;letter-spacing:-.05em;margin:12px 0 7px}.results-head p{font-size:13px;color:#7b888f}.result-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stat-card{padding:17px 19px;border:1px solid #dbe3e0;border-radius:10px;background:rgba(255,255,255,.7)}.stat-card span{display:block;color:#8c999d;font:8px var(--mono);letter-spacing:.13em}.stat-card strong{display:block;font:25px var(--mono);color:#294554;margin:8px 0 3px}.stat-card small{font-size:9px;color:#a0a9aa}.result-actions{display:flex;gap:9px;flex-wrap:wrap;margin:21px 0}.submit-status{font-size:11px;color:#788a8c;min-height:17px}.results-note{margin:20px 0;padding:17px 20px;border-left:3px solid #bca66f;background:rgba(235,238,232,.8);border-radius:0 9px 9px 0}.results-note strong{font-size:11px}.results-note p{font-size:10px;line-height:1.8;color:#7c898b;margin:6px 0 0}.results-toolbar{display:flex;align-items:center;justify-content:space-between;padding:16px 19px;margin-bottom:17px}.results-toolbar strong{display:block;font-size:12px}.results-toolbar small{display:block;color:#97a2a4;font-size:9px;margin-top:4px}.toolbar-actions{display:flex;gap:8px}.data-overview{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:17px}.analysis-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.analysis-panel{padding:20px 21px}.analysis-table{width:100%;border-collapse:collapse;margin:13px 0}.analysis-table th,.analysis-table td{text-align:left;padding:9px 7px;border-bottom:1px solid #e8edeb;font-size:9px}.analysis-table th{font:8px var(--mono);color:#a18448;letter-spacing:.09em}.analysis-table td{color:#607179}.analysis-table td:first-child{font-weight:700;color:#344c57}.effect-chip{display:inline-flex;padding:3px 6px;border-radius:4px;background:#e7efeb;color:#587f6d;font:8px var(--mono)}.empty-analysis{padding:22px;background:#f4f7f5;border:1px dashed #cbd8d3;border-radius:8px;color:#91a0a1;font-size:10px;line-height:1.8}.bar-row{display:grid;grid-template-columns:80px 1fr 42px;gap:7px;align-items:center;margin:9px 0;font-size:9px;color:#75858a}.bar-track{height:7px;background:#e8eeeb;border-radius:8px;overflow:hidden}.bar-track i{display:block;height:100%;background:linear-gradient(90deg,#6f988d,#c7ad70);border-radius:8px}.settings-dialog{width:min(480px,calc(100vw - 28px));border:1px solid #dbe3e0;border-radius:13px;padding:25px;background:#fbfcfa;color:var(--ink);box-shadow:0 25px 90px rgba(12,28,38,.28)}.settings-dialog::backdrop{background:rgba(10,23,31,.42);backdrop-filter:blur(5px)}.dialog-head{display:flex;justify-content:space-between;align-items:center}.settings-dialog h2{font-size:21px;margin:14px 0 7px}.settings-dialog p{font-size:11px;line-height:1.8;color:#849196}.dialog-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);padding:11px 17px;background:#192e3a;color:#f3f4e9;border-radius:8px;box-shadow:var(--shadow);font-size:11px;opacity:0;pointer-events:none;transition:.25s;z-index:80}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:20px;padding:45px 0}.hero-visual{height:260px}.setup-layout,.briefing-grid{grid-template-columns:1fr}.setup-aside{display:grid;grid-template-columns:1fr 1fr}.instrument-console{left:2%;right:2%;padding:12px}.gauge-grid{gap:7px}.gauge-card{padding:7px 5px}.gauge-body{flex-direction:column;gap:0}.dial-wrap{width:min(100%,125px)}.gauge-reading{text-align:center}.gauge-reading small{font-size:6px}.flightdeck-scene{min-height:470px}.instrument-console{min-height:70%}.analysis-grid{grid-template-columns:1fr}}
+@media(max-width:620px){.protocol-label{display:none}.topbar{height:64px}.hero-copy h1{font-size:42px}.hero-actions{flex-wrap:wrap}.study-grid{grid-template-columns:1fr}.bottom-tools{align-items:flex-start;gap:15px;flex-direction:column}.tool-actions{width:100%;flex-wrap:wrap}.setup-main{padding:21px 18px}.setup-aside{grid-template-columns:1fr}.briefing-copy h1{font-size:34px}.briefing-actions{flex-wrap:wrap}.flightdeck-scene{height:570px;min-height:570px}.windshield{height:32%}.instrument-console{bottom:3%;min-height:68%;left:3%;right:3%;padding:11px 9px 8px}.gauge-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.gauge-card{min-height:150px}.gauge-body{flex-direction:row}.dial-wrap{width:55%;min-width:75px}.gauge-reading small{font-size:6px}.task-control-bar{align-items:flex-start;flex-direction:column}.task-response{width:100%;justify-content:space-between}.task-topline{align-items:flex-start}.task-metadata{flex-direction:column;gap:5px;text-align:right}.result-stats,.data-overview{grid-template-columns:repeat(2,1fr)}.results-toolbar{align-items:flex-start;flex-direction:column;gap:12px}.toolbar-actions{flex-wrap:wrap}.integrated-display{grid-template-columns:1fr}.integrated-key{flex-direction:row;flex-wrap:wrap}.separate-display{gap:6px}.variable-card{padding:9px 7px;min-height:140px}.variable-card strong{font-size:19px}.footer{flex-direction:column;gap:7px}}
+.instrument-console.pcp-mode .console-top,.instrument-console.pcp-mode .console-bottom{display:none}.instrument-console.pcp-mode .gauge-grid{display:block;padding:0}.instrument-console.pcp-mode{min-height:56%;bottom:5%;padding:18px 20px}.instrument-console.pcp-mode .pcp-display{min-height:230px}.instrument-console.pcp-mode:before{display:none}
+#cockpit3d{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:.96}.flightdeck-scene.three-ready .windshield-sky{background:linear-gradient(180deg,rgba(174,201,202,.12),rgba(149,182,186,.08) 37%,rgba(198,201,181,.12) 67%,rgba(125,149,140,.1));}.flightdeck-scene.three-ready .windshield{z-index:2;background:transparent}.flightdeck-scene.three-ready .instrument-console{background:linear-gradient(160deg,rgba(39,61,74,.93) 0%,rgba(16,30,40,.97) 52%,rgba(10,23,32,.98) 100%)}.flightdeck-scene.three-fallback #cockpit3d{display:none}
+
+/* Data-collection compliance status */
+.coverage-line{margin:15px 0 8px;padding:10px 12px;border-radius:7px;font-size:10px;line-height:1.65}.coverage-pending{background:#f5f0e5;border:1px solid #e7d9b8;color:#79633a}.coverage-ok{background:#edf4ef;border:1px solid #c8dbce;color:#426b54}.coverage-line b{margin-right:4px}.gaze-preview-note{font-size:10px;color:#7d8b8e}
+
+
+/* NORTHSTAR 2.0 — friendly pastel flight-club theme */
+:root{
+  --ink:#39445f;--muted:#7c879d;--paper:#fffaf2;--panel:#fffdf8;--line:#e6dfd2;
+  --navy:#657a9b;--navy2:#8196b4;--gold:#e5b96e;--mint:#a9d8c8;--cyan:#a9d9e4;
+  --amber:#efbd73;--red:#e88d8a;--green:#85c6ae;
+  --mono:ui-monospace,SFMono-Regular,Consolas,monospace;
+  --sans:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",system-ui,sans-serif;
+  --shadow:0 12px 32px rgba(117,111,135,.12);
+}
+body{background:radial-gradient(circle at 8% 5%,#fff1d9 0,transparent 30%),radial-gradient(circle at 94% 20%,#e5f5f3 0,transparent 28%),#fffaf2;color:var(--ink);font-size:15px}
+.ambient{filter:blur(12px);opacity:.55}.ambient-a{background:radial-gradient(circle,#c9e9e1,transparent 68%)}.ambient-b{background:radial-gradient(circle,#ffe4c9,transparent 70%)}
+.topbar{height:70px;background:rgba(255,251,244,.88);border-bottom:1px solid #eee4d5;padding:0 clamp(18px,4vw,60px)}
+.brand-mark{background:#ffe6b8;border:2px solid #e9bd72;border-radius:13px;color:#7c6a68;box-shadow:inset 0 0 0 3px rgba(255,255,255,.5)}
+.brand strong{font-size:14px;letter-spacing:.08em;color:#53637e}.brand small{display:none}.protocol-label{display:none}
+.icon-button{border-radius:13px;background:#fff;border-color:#eadfce;color:#7d8ba4;width:40px;height:40px;font-size:19px}
+#appMain{max-width:1320px;padding-left:clamp(16px,4vw,60px);padding-right:clamp(16px,4vw,60px)}
+.eyebrow{font-family:var(--sans);font-size:12px;letter-spacing:.06em;color:#ad8b5b;font-weight:700}
+.hero-grid{padding:48px 0 48px;gap:34px;min-height:370px}
+.hero-copy h1{font-size:clamp(38px,4.7vw,62px);line-height:1.18;letter-spacing:-.035em;color:#4b5874;margin:18px 0 13px}
+.hero-copy h1 em{color:#e29c83}.hero-lede{font-size:16px;line-height:1.75;color:#78839a;max-width:510px}
+.hero-actions{gap:13px;margin-top:24px}.btn{height:48px;border-radius:15px;padding:0 21px;font-size:15px;letter-spacing:0;gap:12px}
+.btn-primary{background:#7189ad;color:#fff;box-shadow:0 5px 0 #5e7598,0 9px 20px rgba(94,117,152,.15)}.btn-primary:hover{background:#7f97ba}.btn-secondary{background:#e4f2ed;border:1px solid #cce6dc;color:#4e796d}.btn-outline{border:1px solid #d8d2c7;background:#fffaf4;color:#697a91}.btn-quiet{color:#78869c}
+.hero-footnote{font-size:13px;color:#8d97a5;margin-top:22px}.project-code-inline{margin-left:8px;padding:5px 9px;background:#fff1d7;border:1px solid #f1dfbb;border-radius:10px;color:#9a7950;font-size:12px}
+.hero-visual{height:310px;border-radius:28px;background:linear-gradient(145deg,#d5edf0 0%,#c6e1df 44%,#fbe6cf 100%);border:3px solid rgba(255,255,255,.85);box-shadow:0 14px 35px rgba(123,151,157,.17)}
+.hero-visual:before{inset:12px;border:2px dashed rgba(255,255,255,.8);border-radius:21px}.hero-visual:after{display:none}
+.radar-ring{border:2px dashed rgba(255,255,255,.65)}.radar-cross{background:rgba(255,255,255,.35)}.flight-path{border-color:rgba(137,159,180,.6)}.hero-plane{font-size:52px;color:#f3a887;text-shadow:0 3px 0 #d88771,0 5px 12px rgba(99,122,145,.2)}
+.hero-coordinate{font-family:var(--sans);font-size:12px;color:#667f8b;font-weight:700}.hero-visual-caption{background:rgba(255,255,255,.74);border-radius:13px;padding:9px 12px;bottom:19px;left:22px;color:#687b8c}.hero-visual-caption span,.hero-visual-caption small{display:none}.hero-visual-caption strong{font-size:14px;color:#637b9c}
+.section-heading{margin:9px 0 16px}.section-heading h2{font-size:23px;color:#596781;margin:3px 0}.section-meta{display:none}
+.study-grid{gap:16px}.study-card{border:2px solid #fff;border-radius:23px;background:#fffdf8;padding:23px 24px 19px;box-shadow:0 7px 24px rgba(122,128,145,.08);min-height:245px}
+.study-card-one{background:linear-gradient(145deg,#fffaf0,#fff4e4)}.study-card-two{background:linear-gradient(145deg,#f2fbf7,#eaf6f2)}
+.study-number{font-family:var(--sans);font-weight:800;font-size:13px;color:#bd9660}.study-number span{font:12px var(--sans);color:#95a1b1;letter-spacing:0}.study-card h3{font-size:21px;color:#52617c;margin:10px 0 8px}.study-card p{font-size:15px;line-height:1.75;color:#7e899d}.card-bottom{font:13px var(--sans);letter-spacing:0;color:#9aa3af;border-color:rgba(170,174,181,.25)}.text-link{font-size:14px;color:#7188ad}
+.mini-gauge{background:radial-gradient(circle at 50% 50%,#fff 0 55%,#f2c9a8 58% 70%,#fff 72%);box-shadow:0 2px 5px rgba(117,100,91,.12)}.mini-gauge i{background:#e18d82}.mini-bars i{background:#9acdbd}
+.bottom-tools{border-radius:19px;background:rgba(255,255,255,.72);border:1px solid #ece3d5;padding:17px 20px}.tool-copy strong{font-size:15px}.tool-copy small{font-size:13px;color:#8994a5}.footer{font-size:11px;color:#a4a8ad}
+.page-heading{padding:28px 0 18px}.page-heading h1{font-size:34px;color:#53617c;letter-spacing:-.025em}.page-heading p{font-size:15px;line-height:1.65;color:#8791a2}.back-link{font-size:14px;color:#8795a8;margin-bottom:15px}
+.panel{background:#fffdf8;border:2px solid #fff;border-radius:22px;box-shadow:0 8px 28px rgba(125,129,143,.08)}.setup-main{padding:25px 28px}.panel-heading h2{font-size:18px;color:#55647f}.panel-heading p{font-size:14px;color:#8a95a5}.step-index{background:#fff3de;border:0;color:#b78c56;border-radius:12px;width:36px;height:36px;font:14px var(--sans);font-weight:800}
+.field-label{font-size:14px}.field-label span{font:12px var(--sans)}.text-input{height:48px;border:1.5px solid #e5dfd4;border-radius:12px;font-size:15px;background:#fff}.field-hint{font-size:13px;line-height:1.6;color:#8995a5}.divider{margin:18px 0;background:#eee8dd}
+.consent-copy{background:#f7f7f0;border:1px solid #ece9de;border-radius:14px;padding:15px 17px;font-size:14px;line-height:1.75;color:#68778c}.check-row{font-size:14px;gap:12px}.check-row small{font-size:12px}.check-row input{width:17px;height:17px;accent-color:#88bca9}.aside-dark{background:linear-gradient(145deg,#9ebfbd,#7b9f9f);border-radius:22px;box-shadow:0 8px 22px rgba(112,151,147,.16)}.aside-dark .eyebrow{color:#fff5de}.aside-stat strong{color:#fff0c6}.aside-stat span{font:12px var(--sans);color:#eff9f2}.aside-dark p{font-size:14px;line-height:1.7;color:#f2f7f2}.aside-list{border-color:rgba(255,255,255,.32)}.aside-list span{font:12px var(--sans);color:#e9f3ed}.aside-list b{font-size:13px}.aside-note{background:#fff1df;border-radius:15px;color:#8d775c}.aside-note strong{font-size:14px}.aside-note p{font-size:13px;color:#9c8a74}
+.briefing-grid{gap:22px;padding:15px 0 35px}.briefing-copy h1{font-size:36px;color:#53617c;letter-spacing:-.025em}.briefing-lede{font-size:16px;line-height:1.7;color:#75839a}.briefing-instructions{margin-top:17px}.brief-card{padding:14px 17px;margin:10px 0;background:#fffdf8;border:1px solid #eee5d7;border-radius:17px}.brief-card h3{font-size:17px;color:#657795;margin:0 0 8px}.briefing-instructions p,.briefing-instructions li{font-size:14px;line-height:1.75;color:#748198}.briefing-instructions p{margin:5px 0}.briefing-instructions .field-hint{font-size:12px;color:#9a927f}.threshold-table{margin:8px 0;background:#fff;border-radius:12px}.threshold-table th,.threshold-table td{padding:9px 12px;font-size:14px}.threshold-table th{font:13px var(--sans);font-weight:800;color:#9b845f;background:#fff4df}.threshold-table td{color:#5e6d82}.brief-summary{font-weight:700;color:#7389a8!important}.briefing-actions{margin-top:17px}.briefing-footnote{font-size:13px;color:#8994a4}.briefing-side{border-radius:24px;background:linear-gradient(145deg,#beded5,#91c0b5);color:#526f6c;min-height:280px;padding:23px;box-shadow:0 10px 25px rgba(117,165,152,.15)}.briefing-side:after{border-color:rgba(255,255,255,.45);box-shadow:0 0 0 24px rgba(255,255,255,.12),0 0 0 56px rgba(255,255,255,.08)}.briefing-side .side-stat{margin-top:40px}.side-stat strong{font:48px var(--sans);font-weight:800;color:#fff5dc}.side-stat span{font:13px var(--sans);color:#fff}.briefing-side p{font-size:15px;color:#f4fbf6;line-height:1.75}.briefing-side .eyebrow{color:#fff}.briefing-side .side-lines{font:13px var(--sans);color:#f4fbf6;border-color:rgba(255,255,255,.35)}
+.briefing-header .back-link{margin-bottom:8px}
+/* Calibration: make status readable and camera preview visible */
+.calibration-panel{padding:20px;border-radius:22px;background:#fffdf8;border:2px solid #fff}.calibration-top{font-size:15px;color:#66758e}.calibration-count{font-size:15px}.calibration-stage{height:clamp(300px,48vh,460px);background:linear-gradient(145deg,#eef9f4,#fff4e7);border:2px dashed #d9e7dd;border-radius:20px}.cal-point{width:23px;height:23px;border:4px solid #fff;background:#ed9e8d;box-shadow:0 0 0 3px #ed9e8d;cursor:pointer}.cal-point.done{background:#83c6ae;box-shadow:0 0 0 3px #83c6ae}.calibration-bottom p{font-size:13px;line-height:1.65;color:#8993a3}.calibration-bottom .btn{font-size:14px}
+#webgazerVideoContainer{z-index:10000!important;position:fixed!important;top:16px!important;right:16px!important;left:auto!important;bottom:auto!important;width:190px!important;height:142px!important;border:4px solid #fff!important;border-radius:17px!important;overflow:hidden!important;box-shadow:0 8px 24px rgba(83,98,112,.22)!important;background:#dbe8e5!important}
+#webgazerVideoFeed{width:100%!important;height:100%!important;object-fit:cover!important;border-radius:12px!important}#webgazerFaceOverlay,#webgazerFaceFeedbackBox{z-index:10001!important}
+/* Task screen: fewer labels, larger type, rounded pastel gauges */
+.task-topline{padding:0 0 9px}.task-brand b{font:700 14px var(--sans);letter-spacing:0;color:#586a86}.task-brand small{font:12px var(--sans);letter-spacing:0;color:#8995a5}.task-metadata{font:700 13px var(--sans);letter-spacing:0;color:#7485a0;gap:13px}.task-progress{height:7px;background:#eee8dc;border-radius:9px;margin-bottom:13px}.task-progress div{background:linear-gradient(90deg,#9dcfc0,#f0c68d,#eea99c);border-radius:9px}
+.flightdeck-scene{height:min(66vh,640px);min-height:500px;border-radius:27px;background:linear-gradient(180deg,#cbe9ec 0%,#d9f0e9 45%,#fff0db 100%);border:3px solid #fff;box-shadow:0 12px 30px rgba(121,152,157,.16)}
+.windshield{border:8px solid #91aeb0;border-bottom:10px solid #819c9e;background:#c6e7ed;border-radius:38px 38px 20px 20px;clip-path:none;left:7%;right:7%;top:3%;height:38%}.windshield-sky{background:linear-gradient(180deg,#9bd4e7 0%,#c8e8eb 70%,#f2e8cf 100%)}.sky-cloud{background:#fff;filter:none;opacity:.82;border-radius:999px;box-shadow:30px 4px 0 8px #fff,60px -3px 0 4px #fff}.cloud-a{width:62px;height:27px;left:12%;top:28%}.cloud-b{width:55px;height:24px;right:19%;top:18%}.sky-glow{width:95px;height:95px;background:radial-gradient(circle,#ffdf98 0 48%,rgba(255,223,152,.18) 49%,transparent 70%);left:71%;top:12%}.horizon-line{background:#a7c9ad;box-shadow:0 6px 15px rgba(124,166,148,.14)}.distant-land{background:linear-gradient(170deg,transparent 0 12%,#9fbea2 13% 100%)}
+.window-frame{background:#8da9a7;box-shadow:none}.frame-left,.frame-right{width:11px}.cockpit-canopy{background:rgba(255,255,255,.12)}
+.flightdeck-status{top:10px;left:20px;right:20px}.status-pill{background:rgba(255,255,255,.82);border:1px solid rgba(255,255,255,.9);border-radius:20px;padding:7px 12px;color:#607b87;font-size:13px}.status-dot{background:#83c6ae;box-shadow:0 0 0 4px rgba(131,198,174,.18)}.altitude-readout{display:none}
+.instrument-console{left:4%;right:4%;bottom:3%;min-height:64%;background:linear-gradient(145deg,#fff9ed,#f8f2e6);border:3px solid #fff;border-radius:25px;box-shadow:0 10px 25px rgba(106,122,128,.17),inset 0 2px 3px rgba(255,255,255,.9);padding:14px 17px 11px;transform:none}
+.instrument-console:before{height:7px;border-radius:22px 22px 0 0;background:linear-gradient(90deg,#b8dfd2,#f5d18e,#f1b7a8,#c8c1e8)}
+.console-top,.console-bottom{font:13px var(--sans);letter-spacing:0;color:#8994a1}.console-top{padding:3px 4px 10px}.console-top>span:first-child{font-weight:800;color:#6b7c91}.console-top i{display:none}
+.gauge-grid{gap:11px}.gauge-card{border:2px solid #fff;border-radius:19px;padding:11px 9px;background:#eef7f4;box-shadow:0 5px 12px rgba(103,130,132,.09)}.gauge-card:nth-child(2){background:#fff3e4}.gauge-card:nth-child(3){background:#f0effa}.gauge-card:nth-child(4){background:#fdeeea}.gauge-card:after{inset:4px;border:1px dashed rgba(117,140,150,.18);border-radius:14px}.gauge-head{color:#65758d;gap:6px}.gauge-index{font:700 12px var(--sans);color:#c39b68}.gauge-name{font:700 14px var(--sans);letter-spacing:0;color:#5f718b}.gauge-unit{font:12px var(--sans);color:#8493a3}.gauge-body{gap:3px;margin-top:6px}.dial-wrap{width:min(54%,144px);min-width:90px}.dial-rim{fill:#fff;stroke:#a9beb8;stroke-width:4}.dial-face{fill:#fff;stroke:#dfe9e3;stroke-width:1.5}.dial-scale{stroke:#91a5a5;stroke-width:2.4;opacity:.8}.dial-tick{stroke:#e88d8a;stroke-width:4}.dial-labels text{fill:#d77f7c;font:700 8px var(--sans)}.dial-needle{stroke:#e48e7d;stroke-width:3.4;filter:none}.dial-hub{fill:#f0bf80;stroke:#fff;stroke-width:3}.gauge-reading strong{font:800 clamp(18px,1.8vw,25px) var(--sans);color:#526680}.gauge-reading small{font:12px var(--sans);color:#82919f;letter-spacing:0;margin-top:5px}.gauge-card.cued{border-color:#f0bb69;box-shadow:0 0 0 3px rgba(240,187,105,.24),0 6px 15px rgba(181,147,95,.14)}.gauge-card.actual-alert{border-color:#e88987;box-shadow:0 0 0 3px rgba(232,137,135,.22),0 6px 15px rgba(188,113,110,.13)}
+.console-bottom{padding:8px 4px 0;font-size:12px;color:#8792a0}.console-bottom span:last-child{display:none}
+.task-control-bar{padding:14px 18px;margin-top:10px;border:2px solid #fff;border-radius:20px;background:#fffdf8;box-shadow:0 6px 18px rgba(124,131,145,.08)}.task-instruction{gap:3px}.control-label{font:700 12px var(--sans);letter-spacing:0;color:#b58d60}.task-instruction strong{font-size:18px;color:#586984}.task-instruction small{font-size:14px;color:#8792a2;line-height:1.5}.response-hint{font:13px var(--sans);letter-spacing:0;color:#8794a5}.response-hint kbd{font:700 13px var(--sans);border:1px solid #e3dfd6;border-radius:8px;padding:5px 8px;background:#fff6e8;color:#7b879a}.btn-alert{background:#e78f83;color:#fff;min-width:158px;border-radius:14px;box-shadow:0 4px 0 #cf786e}.btn-alert:hover{background:#ee9c90}.response-option{height:43px;min-width:74px;padding:0 15px;border:1.5px solid #e1e8df;border-radius:13px;background:#f6fbf5;color:#5e7186;font:700 15px var(--sans)}.response-option:hover{border-color:#9dcdbd;background:#eff9f2}.task-footer{margin-top:7px;font:12px var(--sans);color:#a0a8b1;letter-spacing:0}.abort-link{font:13px var(--sans);color:#c18479}
+#screen-break{min-height:65vh}.break-card{border:2px solid #fff;border-radius:25px;background:#fffdf8;box-shadow:0 12px 32px rgba(121,127,143,.1);padding:36px}.break-card h1{font-size:34px;color:#596b88}.break-card p{font-size:16px;line-height:1.7;color:#7d8ba0}.break-icon{font-size:45px;color:#f0b77d}.break-progress i{width:34px;height:7px;border-radius:8px;background:#9dcdbd}.break-progress i.pending{background:#eee7da}.break-card .btn{min-width:190px}
+.results-head h1,.results-head h2{color:#596b88}.stat-card,.analysis-panel,.results-toolbar{border:2px solid #fff;border-radius:19px;background:#fffdf8}.stat-card span{font:12px var(--sans);letter-spacing:0;color:#8d98a8}.stat-card strong{font:800 26px var(--sans);color:#5a708f}.stat-card small{font-size:12px;color:#96a0ab}.results-note{border-left:4px solid #e9bc7d;background:#fff5e6;border-radius:0 15px 15px 0}.results-note strong{font-size:14px}.results-note p{font-size:13px;line-height:1.7}.analysis-table th,.analysis-table td{font-size:13px}.empty-analysis{font-size:13px}.settings-dialog{border:2px solid #fff;border-radius:22px;background:#fffdf8}.settings-dialog h2{font-size:24px}.settings-dialog p{font-size:14px;line-height:1.7}
+/* Hide redundant technical labels in participant-facing screens. */
+.task-participant,.task-footer span:nth-child(2),.task-brand small{display:none!important}.console-bottom span:last-child{display:none!important}.protocol-label,.section-meta{display:none!important}
+@media(max-width:900px){.briefing-side{min-height:230px}.briefing-side .side-stat{margin-top:20px}.gauge-card{padding:9px 7px}.gauge-name{font-size:12px}.gauge-reading small{font-size:11px}.instrument-console{padding:12px}}
+@media(max-width:620px){.hero-grid{padding:30px 0 35px}.hero-copy h1{font-size:39px}.hero-lede{font-size:15px}.hero-visual{height:230px}.study-card{padding:18px}.briefing-copy h1{font-size:30px}.brief-card{padding:12px}.briefing-instructions p,.briefing-instructions li{font-size:13px}.threshold-table th,.threshold-table td{font-size:12px;padding:8px 9px}.flightdeck-scene{height:590px;min-height:590px;border-radius:20px}.instrument-console{left:2%;right:2%;bottom:2%;min-height:70%;padding:11px 8px 8px}.gauge-grid{gap:7px}.gauge-card{min-height:152px;padding:8px 6px}.gauge-name{font-size:12px}.gauge-unit{font-size:11px}.dial-wrap{width:53%;min-width:74px}.gauge-reading strong{font-size:18px}.gauge-reading small{font-size:10px}.console-top,.console-bottom{font-size:11px}.task-control-bar{gap:10px;padding:12px;align-items:flex-start}.task-instruction strong{font-size:16px}.task-instruction small{font-size:13px}.task-response{flex-wrap:wrap;gap:8px}.btn-alert{min-width:140px}.response-hint{font-size:12px}.response-option{min-width:65px;font-size:13px}.calibration-stage{height:330px}#webgazerVideoContainer{width:132px!important;height:99px!important;top:8px!important;right:8px!important}}
+/* Higher-specificity overrides for the optional WebGL cockpit layer */
+.flightdeck-scene.three-ready .windshield{border-color:#8eaaa7;border-bottom-color:#7f9f9a;background:transparent}
+.flightdeck-scene.three-ready .windshield-sky{background:linear-gradient(180deg,#a8dce9 0%,#c9e9e8 72%,#f7e7c7 100%)}
+.flightdeck-scene.three-ready .instrument-console{background:linear-gradient(145deg,#fff9ed,#f8f2e6);border-color:#fff;box-shadow:0 10px 25px rgba(106,122,128,.17),inset 0 2px 3px rgba(255,255,255,.9)}
+.instrument-console.pcp-mode{background:linear-gradient(145deg,#fff9ed,#f8f2e6);border:3px solid #fff;border-radius:25px;min-height:56%;bottom:4%;padding:18px 20px;box-shadow:0 10px 25px rgba(106,122,128,.17)}
+.instrument-console.pcp-mode .pcp-display{min-height:235px}
+.variable-card{border:2px solid #fff!important;border-radius:18px!important;background:linear-gradient(145deg,#eaf7f1,#dff0e9)!important;color:#586b82!important;box-shadow:0 5px 14px rgba(102,133,130,.1)}
+.variable-card:nth-child(2){background:linear-gradient(145deg,#fff4e4,#ffecd9)!important}
+.variable-card:nth-child(3){background:linear-gradient(145deg,#f2effb,#e8e5f7)!important}
+.variable-card span,.variable-card small{font:700 13px var(--sans)!important;letter-spacing:0;color:#8190a3!important}
+.variable-card strong{font:800 30px var(--sans)!important;color:#536987!important}
+.variable-bar{height:8px;background:#fff!important;border-radius:8px!important}
+.variable-bar i{background:linear-gradient(90deg,#91cdbb,#efc18a)!important}
+.integration-plot{background:linear-gradient(145deg,#e7f5f4,#e9f0f8)!important;border:2px solid #fff!important;border-radius:20px!important;box-shadow:inset 0 0 0 1px #dcebe7}
+.plot-axis{stroke:#829a9b!important}.plot-grid{stroke:#b4cbc6!important;opacity:.7!important}.plot-label{fill:#6d7d92!important;font:12px var(--sans)!important}.plot-point{stroke:#fff!important;stroke-width:3!important}
+.integrated-key{font:14px var(--sans)!important;color:#718098!important}.integrated-key strong{font:800 19px var(--sans)!important;color:#617b9b!important}
+.pcp-prompt-label{font:700 13px var(--sans)!important;letter-spacing:0;color:#b18a5c!important}
+
+/* NORTHSTAR 2.1 — playful flight-club polish, with task text kept readable */
+:root{--sans:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",system-ui,sans-serif}
+body{font-size:16px;background:radial-gradient(circle at 8% 5%,#fff0d7 0,transparent 31%),radial-gradient(circle at 94% 16%,#e4f5f0 0,transparent 30%),#fffaf2}
+.brand strong{font-size:15px;letter-spacing:.04em}
+.topbar{height:68px}
+.hero-copy h1{font-size:clamp(40px,4.8vw,64px);line-height:1.2}
+.hero-lede{font-size:17px;line-height:1.75}
+.hero-visual{border-radius:32px}
+.hero-plane{font-size:56px;filter:drop-shadow(0 4px 0 rgba(207,137,115,.25))}
+.study-card{border-radius:25px;min-height:228px}
+.study-card h3{font-size:22px}.study-card p{font-size:16px;line-height:1.7}
+.bottom-tools{border-radius:22px}
+.page-heading h1{font-size:36px}
+.page-heading p{font-size:16px;line-height:1.6}
+.setup-main{padding:24px 26px}
+.panel-heading h2{font-size:19px}.panel-heading p{font-size:14px}
+.field-label{font-size:15px}.field-hint{font-size:14px;line-height:1.65}
+.consent-copy{font-size:15px;line-height:1.72;padding:15px 17px}
+.consent-copy p{margin:5px 0 8px}.check-row{font-size:15px}.check-row small{font-size:13px}
+.aside-dark{background:linear-gradient(145deg,#b9ddd2,#91c5b8);color:#587b75}.aside-stat strong{font-size:46px;color:#fff7df}.aside-stat span{font:700 13px var(--sans);color:#f5fff8}.aside-dark p{font-size:15px;line-height:1.7;color:#f6fff9}.aside-list{font:13px var(--sans);color:#f4fff8}
+.briefing-grid{gap:20px;align-items:start}.briefing-copy h1{font-size:38px}.briefing-lede{font-size:17px;line-height:1.7;color:#6e7e96}
+.briefing-instructions{margin-top:15px}.brief-card{padding:15px 18px;margin:9px 0;border:2px solid #fff;border-radius:20px;box-shadow:0 5px 16px rgba(124,133,148,.055)}
+.brief-card h3{font-size:18px;margin:0 0 9px;color:#5f7190}.briefing-instructions p,.briefing-instructions li{font-size:15px;line-height:1.65;color:#6f7f96}.briefing-instructions p{margin:6px 0}
+.threshold-table{margin:5px 0 7px}.threshold-table td{font-size:15px;padding:7px 11px}.threshold-table tr td:first-child{font-weight:800;color:#61728c}.threshold-table tr:last-child td{border:0}
+.condition-chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 10px}.condition-chips span{display:inline-flex;align-items:center;padding:7px 11px;border-radius:999px;background:#eef7f2;border:1px solid #dcefe6;color:#64877c;font-size:14px;font-weight:800}.condition-chips span:nth-child(2){background:#fff4e5;border-color:#f4e3c9;color:#a58155}.condition-chips span:nth-child(3){background:#f2effb;border-color:#e4def5;color:#8176a7}
+.risk-rules{display:grid;gap:6px;margin:8px 0}.risk-rules span{display:flex;justify-content:space-between;gap:12px;padding:8px 11px;background:#f7f7f1;border-radius:11px;color:#6b7b92;font-size:14px}.risk-rules b{color:#bf9060}
+.briefing-side{min-height:290px;border-radius:27px;background:linear-gradient(145deg,#c6e5da,#9fcfc2);box-shadow:0 12px 26px rgba(117,165,152,.13);padding:23px;color:#5d7c78}
+.briefing-side:after{border-color:rgba(255,255,255,.55);box-shadow:0 0 0 24px rgba(255,255,255,.14),0 0 0 56px rgba(255,255,255,.09)}
+.brief-mascot{position:relative;z-index:1;font-size:65px;line-height:1.2;margin:10px 0 8px;filter:drop-shadow(0 5px 1px rgba(108,145,133,.12))}
+.briefing-side>strong{position:relative;z-index:1;display:block;font-size:21px;color:#fff9e8}.briefing-side p{font-size:16px;line-height:1.6;color:#f8fffa;margin:8px 0 18px}.briefing-side>span:last-child{position:relative;z-index:1;display:inline-flex;padding:7px 11px;border-radius:999px;background:rgba(255,255,255,.35);color:#557c75;font-weight:800;font-size:13px}
+.briefing-actions .btn{min-width:160px}.briefing-footnote{font-size:14px}
+.calibration-panel{padding:19px 21px}.calibration-top{font-size:16px;font-weight:700}.calibration-bottom p{font-size:14px}.calibration-stage{background:linear-gradient(145deg,#eff9f4,#fff4e6)}
+.task-topline{padding:0 0 10px}.task-brand b{font-size:16px}.task-metadata{font-size:14px;gap:12px}.task-metadata span{padding:7px 11px;border-radius:999px;background:#fffdf8;border:1px solid #eee5d7;color:#687c98}
+.task-progress{height:8px}
+.flightdeck-scene{height:min(66vh,650px);min-height:500px;border:4px solid #fff;border-radius:30px;box-shadow:0 14px 34px rgba(121,152,157,.15)}
+.flightdeck-status{top:12px;left:22px;right:22px}.status-pill{padding:8px 13px;font-size:14px;font-weight:800;color:#647b88}
+.instrument-console{left:4%;right:4%;bottom:3%;border-radius:27px;padding:15px 18px 13px}
+.console-top{font-size:15px;font-weight:800;padding:4px 5px 10px}.gauge-grid{gap:12px}.gauge-card{border-radius:21px;padding:12px 10px}.gauge-name{font-size:15px}.gauge-unit{font-size:13px}.gauge-reading strong{font-size:clamp(20px,1.9vw,27px)}.gauge-reading small{font-size:13px;line-height:1.35;white-space:normal}.dial-wrap{width:min(54%,150px)}
+
+.console-bottom{display:none!important}
+.task-control-bar{padding:15px 19px;border-radius:22px;gap:16px}.control-label{font-size:14px}.task-instruction strong{font-size:19px}.task-instruction small{font-size:15px;line-height:1.45}.response-hint{font-size:14px}.response-hint kbd{font-size:14px}.btn-alert{font-size:16px;min-height:50px;border-radius:16px}
+.response-option{height:48px;min-width:82px;font-size:16px;border-radius:15px}
+.task-footer{font-size:13px}.abort-link{font-size:14px}
+#screen-break{min-height:65vh}.break-card{border-radius:30px;padding:40px}.break-card h1{font-size:36px}.break-card p{font-size:17px}.break-icon{font-size:52px}.break-card .btn{min-height:54px;font-size:17px}
+.results-head h1{font-size:40px}.stat-card span{font-size:13px}.stat-card strong{font-size:27px}.stat-card small{font-size:13px}.analysis-table th,.analysis-table td{font-size:13px}.results-note p{font-size:14px;line-height:1.7}
+/* Remove redundant technical labels, not task instructions or threshold information. */
+.task-brand small,.task-footer span:first-child,.task-footer span:nth-child(2),.console-bottom{display:none!important}
+@media(max-width:900px){.briefing-side{min-height:210px}.brief-mascot{font-size:52px;margin:5px 0}.briefing-side p{margin:5px 0 12px}.gauge-card{padding:9px 7px}.gauge-name{font-size:13px}.gauge-reading small{font-size:12px}}
+@media(max-width:620px){.hero-copy h1{font-size:39px}.hero-lede{font-size:15px}.briefing-copy h1{font-size:31px}.briefing-lede{font-size:15px}.brief-card{padding:12px 13px}.brief-card h3{font-size:16px}.briefing-instructions p,.briefing-instructions li{font-size:13px}.threshold-table td{font-size:13px;padding:7px 8px}.condition-chips span{font-size:12px;padding:6px 8px}.risk-rules span{font-size:12px}.flightdeck-scene{height:600px;min-height:600px}.instrument-console{left:2%;right:2%;bottom:2%;min-height:70%;padding:11px 8px 8px}.gauge-grid{gap:7px}.gauge-card{min-height:152px;padding:8px 6px}.gauge-name{font-size:13px}.gauge-unit{font-size:11px}.dial-wrap{width:53%;min-width:74px}.gauge-reading strong{font-size:18px}.gauge-reading small{font-size:11px}.task-control-bar{gap:10px;padding:12px;align-items:flex-start}.task-instruction strong{font-size:16px}.task-instruction small{font-size:13px}.task-response{flex-wrap:wrap;gap:8px}.btn-alert{min-width:140px}.response-hint{font-size:12px}.response-option{min-width:65px;font-size:13px}.task-metadata{font-size:12px;gap:5px}.task-metadata span{padding:5px 7px}.calibration-stage{height:330px}}
+
+/* NORTHSTAR 2.1 — friendlier, larger, simplified participant interface */
+.topbar{background:rgba(255,251,245,.94);border-bottom:2px solid #f1e8dc}
+.brand strong{font-size:15px;letter-spacing:0;font-weight:850}
+.eyebrow{font-size:14px;letter-spacing:0}
+.hero-copy h1{font-size:clamp(40px,4.8vw,64px)}
+.hero-lede{font-size:17px;line-height:1.75}
+.hero-visual{border-radius:34px;box-shadow:0 15px 0 rgba(210,228,220,.55),0 18px 38px rgba(123,151,157,.16)}
+.hero-visual:before{border:3px dashed rgba(255,255,255,.82);border-radius:27px}
+.hero-plane{font-size:62px;left:52%;top:25%;transform:rotate(10deg);filter:drop-shadow(0 7px 2px rgba(119,141,155,.15))}
+.hero-visual-caption{left:30px;bottom:24px;padding:10px 16px;border-radius:18px;background:rgba(255,255,255,.66);color:#65788f;backdrop-filter:blur(4px)}
+.hero-visual-caption strong{font:800 21px var(--sans);letter-spacing:0}
+.hero-coordinate{display:none}
+.study-card{border:2px solid #fff;border-radius:25px;box-shadow:0 8px 20px rgba(129,132,151,.08);padding:23px 25px;background:#fffdf9}
+.study-card h3{font-size:23px;color:#586b88}
+.study-card p{font-size:16px;line-height:1.7;color:#7c879a}
+.study-number{font:800 15px var(--sans);letter-spacing:0;color:#a88a69}
+.card-bottom{font:13px var(--sans);letter-spacing:0;color:#8893a4}
+.text-link{font-size:15px;color:#7a8eae}
+.bottom-tools{background:#f4f0e8;border:2px solid #fff;border-radius:20px;padding:17px 20px}
+.tool-copy strong{font-size:16px}.tool-copy small{font-size:14px;color:#7e899c}
+.page-heading h1{font-size:40px;color:#586b88}.page-heading p{font-size:16px;line-height:1.7;color:#7b879b}
+.back-link{font-size:15px;color:#7d8eaa}
+.panel{border:2px solid #fff;border-radius:23px;box-shadow:0 9px 25px rgba(117,126,149,.07)}
+.setup-main{padding:27px 30px}
+.panel-heading h2{font-size:20px}.panel-heading p{font-size:15px;color:#7d899d}
+.field-label{font-size:16px}.field-hint{font-size:14px;line-height:1.65;color:#7e8a9c}
+.text-input{height:48px;border-radius:13px;font-size:16px}
+.consent-copy{font-size:15px;line-height:1.7;border-radius:15px}
+.check-row{font-size:15px;line-height:1.45}.check-row small{font-size:13px}
+.briefing-copy h1{font-size:40px}
+.briefing-lede{font-size:18px;line-height:1.65;color:#6f7e96}
+.brief-card{border-radius:22px;padding:15px 18px;background:#fffefa}
+.brief-card h3{font-size:19px;color:#637796}
+.briefing-instructions p,.briefing-instructions li{font-size:16px;line-height:1.65;color:#697991}
+.threshold-table td{font-size:16px;padding:7px 11px}
+.briefing-side{border:3px solid #fff;border-radius:32px;box-shadow:0 10px 0 rgba(195,224,213,.65),0 14px 30px rgba(117,165,152,.12)}
+.brief-mascot{font-size:78px;filter:drop-shadow(0 6px 2px rgba(108,145,133,.12))}
+.briefing-side>strong{font-size:23px}.briefing-side p{font-size:18px}
+.briefing-side>span:last-child{font-size:14px}
+.briefing-actions .btn{min-height:52px;font-size:16px}
+.calibration-panel{border-radius:26px;padding:22px}
+.calibration-top{font-size:17px}.calibration-bottom p{font-size:15px}
+.calibration-stage{border:2px dashed #d7e8df;border-radius:22px}
+.cal-point{width:20px;height:20px;border:4px solid #fff;background:#f1ad91;box-shadow:0 0 0 3px #eaa88d}
+.cal-point.active{animation:pulsePoint 1.15s infinite}
+.task-topline{padding-bottom:12px}
+.task-brand b{font-size:17px;color:#586b88}
+.task-metadata{font-size:15px;gap:9px;color:#7485a0}
+.task-metadata span{padding:8px 12px;border-radius:14px;background:#fffdf8;border:2px solid #fff}
+.task-progress{height:9px;margin-bottom:15px;background:#efe8dd;border-radius:99px}
+.flightdeck-scene{border:4px solid #fff;border-radius:32px;box-shadow:0 10px 0 rgba(209,229,220,.55),0 15px 32px rgba(121,152,157,.12)}
+.windshield{border:8px solid #98b8b1;border-bottom:10px solid #89a9a3;border-radius:42px 42px 22px 22px}
+.cockpit-canopy{opacity:.35}
+.flightdeck-status{top:13px;left:23px;right:23px}
+.status-pill{font-size:15px;padding:9px 15px;border:2px solid #fff}
+.instrument-console{left:3.5%;right:3.5%;bottom:3%;min-height:65%;border:4px solid #fff;border-radius:29px;background:linear-gradient(145deg,#fffdf7,#f7f4e9)!important;box-shadow:0 10px 24px rgba(117,132,140,.13),inset 0 2px 3px rgba(255,255,255,.9)}
+.flightdeck-scene.three-ready .instrument-console{background:linear-gradient(145deg,#fffdf7,#f7f4e9)!important}
+.console-top{font-size:16px;padding-bottom:11px}
+
+.gauge-card{border:2px solid #fff;border-radius:23px;box-shadow:0 5px 14px rgba(103,130,132,.08)}
+.gauge-name{font-size:16px}.gauge-unit{font-size:13px}
+.gauge-reading strong{font-size:clamp(22px,2vw,28px)}
+.gauge-reading small{font-size:14px;line-height:1.4;letter-spacing:0;color:#78889b}
+.task-control-bar{border:3px solid #fff;border-radius:25px;padding:17px 20px;box-shadow:0 7px 18px rgba(124,131,145,.07)}
+.control-label{font-size:14px;letter-spacing:0}
+.task-instruction strong{font-size:20px;line-height:1.4;color:#566985}
+.task-instruction small{font-size:16px;line-height:1.55;color:#78869b}
+.response-hint{font-size:14px}
+.response-hint kbd{font-size:15px;border-radius:10px}
+.btn-alert{min-height:54px;min-width:170px;font-size:17px;border-radius:17px;box-shadow:0 5px 0 #cf786e}
+.response-option{height:50px;min-width:86px;font-size:17px;border-radius:16px}
+.task-footer{font-size:14px}
+.abort-link{font-size:15px}
+#screen-break .break-card{border:3px solid #fff;border-radius:34px;padding:42px;background:linear-gradient(150deg,#fffdf7,#f5f8f0);box-shadow:0 10px 0 rgba(221,231,219,.7),0 16px 32px rgba(121,127,143,.1)}
+.break-icon{font-size:65px;filter:drop-shadow(0 5px 2px rgba(185,150,116,.12))}
+.break-card h1{font-size:38px;color:#5a6c88}
+.break-card p{font-size:17px;line-height:1.7;color:#74829a}
+.break-progress i{width:38px;height:9px;border-radius:99px}
+.break-card .btn{min-height:56px;font-size:17px;border-radius:18px}
+.results-head h1{font-size:40px}.results-head p{font-size:16px}
+.stat-card span,.stat-card small{font-size:13px}.stat-card strong{font-size:28px}
+.analysis-table th,.analysis-table td{font-size:14px}
+.footer{font-size:12px;letter-spacing:0}
+.topbar .brand{gap:10px}.topbar .brand-mark{font-size:21px}
+/* Keep task-critical text visible at readable sizes on smaller displays. */
+@media(max-width:900px){
+  .briefing-copy h1{font-size:35px}.briefing-side{min-height:210px}
+  .flightdeck-scene{height:600px;min-height:600px}
+  .instrument-console{left:2%;right:2%;bottom:2%;min-height:70%;padding:11px 8px 8px}
+  .gauge-card{min-height:158px;padding:9px 7px}.gauge-name{font-size:14px}
+  .gauge-reading strong{font-size:21px}.gauge-reading small{font-size:12px}
+  .task-instruction strong{font-size:18px}.task-instruction small{font-size:14px}
+}
+@media(max-width:620px){
+  .hero-copy h1{font-size:39px}.hero-lede{font-size:16px}.hero-visual{height:230px}
+  .study-card h3{font-size:21px}.study-card p{font-size:15px}
+  .briefing-copy h1{font-size:32px}.briefing-lede{font-size:16px}
+  .brief-card{padding:12px 13px}.brief-card h3{font-size:17px}
+  .briefing-instructions p{font-size:14px}.threshold-table td{font-size:14px;padding:7px 8px}
+  .flightdeck-scene{height:610px;min-height:610px}.instrument-console{min-height:72%}
+  .gauge-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+  .gauge-card{min-height:154px;padding:8px 6px}.gauge-name{font-size:13px}.gauge-unit{font-size:11px}
+  .dial-wrap{width:53%;min-width:74px}.gauge-reading strong{font-size:18px}.gauge-reading small{font-size:11px}
+  .task-control-bar{padding:13px;gap:10px}.task-instruction strong{font-size:17px}.task-instruction small{font-size:13px}
+  .btn-alert{min-width:145px;min-height:49px;font-size:15px}.response-option{min-width:67px;height:45px;font-size:14px}
+  .task-metadata{font-size:12px;gap:5px}.task-metadata span{padding:6px 8px}
+}
+
+/* Hide navigation chrome while a timed task or transition is active. */
+body.focus-task-screen .topbar,body.focus-break-screen .topbar{display:none}
+body.focus-task-screen #appMain,body.focus-break-screen #appMain{padding-top:10px}
+body.focus-task-screen .task-footer{display:flex;justify-content:flex-end}
+body.focus-task-screen .task-footer .abort-link{background:rgba(255,255,255,.76);padding:7px 12px;border-radius:999px;border:1px solid #f0e3d8}
+body.focus-task-screen .task-brand .brand-mark{border-radius:50%;background:#ffe9c9;border:2px solid #f5d39c}
+body.focus-task-screen .console-top>span:first-child{font-size:16px}
+body.focus-task-screen .task-instruction{max-width:72%}
+body.focus-task-screen .task-response{flex-shrink:0}
+body.focus-task-screen .task-metadata span{font-size:15px;font-weight:800}
+@media(max-width:620px){
+  body.focus-task-screen #appMain{padding-left:10px;padding-right:10px}
+  body.focus-task-screen .task-instruction{max-width:100%}
+  body.focus-task-screen .task-control-bar{align-items:stretch}
+  body.focus-task-screen .task-response{width:100%}
+  body.focus-task-screen .task-footer{padding-right:4px}
+}
+
+.calibration-controls{display:flex;gap:10px;align-items:center;justify-content:flex-end;flex-wrap:wrap}.calibration-controls .btn{min-height:48px;font-size:15px}@media(max-width:620px){.calibration-controls{width:100%;justify-content:stretch}.calibration-controls .btn{flex:1}}
+#retryEyeTracking[hidden]{display:none!important}
+
+/* NORTHSTAR 3.0 — realistic fighter-formation cockpit; all stimulus graphics remain live HTML/SVG. */
+:root{--tactical-ink:#e8eef2;--tactical-muted:#aab8c2;--tactical-panel:#101b25;--tactical-panel-2:#1a2935;--tactical-line:rgba(194,211,220,.24);--tactical-amber:#f2bd63;--tactical-red:#ed746b;--tactical-green:#88c9ae}
+body{background:#e9edf0;color:#243440}
+.topbar{background:rgba(12,23,33,.96);border:0;color:#f2f5f6;box-shadow:0 4px 16px rgba(7,17,26,.22)}
+.topbar .brand strong{color:#f0f3f5;font-size:16px}
+.topbar .brand-mark{background:#263d4b;color:#f3c36f;border:1px solid #59707e;border-radius:10px}
+.topbar .protocol-label{color:#b3c0c7}
+.topbar .icon-button{color:#dbe5e9;border-color:#62727c}
+.hero-visual{background-image:linear-gradient(180deg,rgba(9,18,27,.12),rgba(9,18,27,.32)),url("assets/fighter_windshield.webp");background-position:center 46%;background-size:cover;border:1px solid rgba(22,40,52,.5);box-shadow:0 18px 38px rgba(17,36,50,.22)}
+.hero-visual:before{border:1px solid rgba(228,237,242,.45);border-radius:27px}
+.hero-visual .radar-ring,.hero-visual .radar-cross,.hero-visual .flight-path{opacity:.35}
+.hero-plane{color:#f2f5f6;text-shadow:0 4px 12px rgba(0,0,0,.35);filter:drop-shadow(0 5px 3px rgba(0,0,0,.4))}
+.hero-visual-caption{background:rgba(9,20,29,.72);border:1px solid rgba(255,255,255,.24);color:#f1f4f5;backdrop-filter:blur(7px)}
+.hero-visual-caption strong{color:#f1f4f5}
+.study-card{background:#f8fafb;border:1px solid #d7e0e5;box-shadow:0 7px 20px rgba(30,48,59,.08)}
+.study-card h3{color:#273c4b}.study-card p{color:#647683}
+.bottom-tools{background:#e4eaed;border:1px solid #cfd9de}
+.briefing-side{background:linear-gradient(145deg,#172b39,#0d1923);border:1px solid #526575;border-radius:22px;box-shadow:0 16px 32px rgba(9,23,34,.22);color:#e4ebef}
+.briefing-side:after{border-color:rgba(210,225,233,.13);box-shadow:0 0 0 22px rgba(255,255,255,.03),0 0 0 48px rgba(255,255,255,.02)}
+.brief-mascot{font-size:68px;color:#f0bd68;filter:drop-shadow(0 5px 7px rgba(0,0,0,.24))}
+.briefing-side>strong{color:#f2f5f6}.briefing-side p{color:#c5d0d6}.briefing-side>span:last-child{background:rgba(237,190,106,.16);border:1px solid rgba(237,190,106,.36);color:#f0c77f}
+.brief-card{background:#f9fbfc;border:1px solid #d9e1e6;box-shadow:0 4px 14px rgba(25,44,57,.045)}
+.brief-card h3{color:#2e4656}.briefing-instructions p,.briefing-instructions li{color:#536775}
+.condition-chips span{background:#e6eef2;border:1px solid #ccd9df;color:#486273}
+.condition-chips span:nth-child(2){background:#fff0d9;border-color:#eed2a4;color:#94672d}
+.condition-chips span:nth-child(3){background:#e7edf4;border-color:#cad5e1;color:#4d6681}
+.risk-rules span{background:#edf2f4;color:#425a68}.risk-rules b{color:#986b36}
+#screen-task{color:#e9eff3}
+#screen-task .task-topline{align-items:center}
+#screen-task .task-brand b{color:#263a48;font-size:17px}
+#screen-task .task-brand .brand-mark{background:#263b49;border:1px solid #586e7b;color:#f1bd65}
+#screen-task .task-metadata span{background:rgba(13,26,37,.82);border:1px solid rgba(218,231,237,.25);color:#e2eaee;font-size:14px}
+#screen-task .task-progress{background:#263640;border:1px solid rgba(255,255,255,.1)}
+#screen-task .task-progress div{background:linear-gradient(90deg,#77b69d,#e6b55e)}
+#screen-task .flightdeck-scene{height:min(74vh,760px);min-height:590px;border:1px solid #526472;border-radius:22px;background:linear-gradient(180deg,#263b49 0%,#111b24 75%);box-shadow:0 24px 52px rgba(5,13,20,.32);overflow:hidden}
+#screen-task #cockpit3d{opacity:.28;filter:saturate(.65) contrast(1.08)}
+#screen-task .windshield{left:3.5%;right:3.5%;top:0;height:57%;clip-path:none;border:5px solid #172631;border-bottom:9px solid #0c1821;border-radius:30px 30px 10px 10px;background:#273c49;box-shadow:inset 0 0 0 1px rgba(218,232,238,.22),0 12px 24px rgba(0,0,0,.24);z-index:2}
+#screen-task .windshield-sky{background:linear-gradient(180deg,rgba(10,25,36,.04),rgba(11,25,36,.1) 64%,rgba(8,17,25,.44)),url("assets/fighter_windshield.webp") center 50%/cover no-repeat!important}
+#screen-task .sky-glow,#screen-task .sky-cloud,#screen-task .horizon-line,#screen-task .distant-land{display:none}
+#screen-task .window-frame{background:linear-gradient(90deg,#08121a,#425563 50%,#0a151e);box-shadow:inset 0 0 0 1px rgba(229,238,241,.18)}
+#screen-task .cockpit-canopy{opacity:.8;background:linear-gradient(90deg,#07121a,#293d4b 32%,rgba(12,25,35,.15) 100%)}
+#screen-task .flightdeck-status{top:14px;left:22px;right:22px;z-index:6}
+#screen-task .status-pill{background:rgba(10,22,31,.78);border:1px solid rgba(221,234,240,.24);color:#eaf0f3;font-size:13px;border-radius:9px;backdrop-filter:blur(7px)}
+#screen-task .status-pill .status-dot{background:#87c5a7;box-shadow:0 0 0 4px rgba(135,197,167,.15)}
+#screen-task .altitude-readout{display:block;color:#e5edf1;font:700 13px var(--sans);letter-spacing:0;background:rgba(9,21,30,.68);padding:8px 11px;border:1px solid rgba(230,239,242,.2);border-radius:8px}
+#screen-task .ambient-event{position:absolute;z-index:7;top:22%;left:50%;transform:translate(-50%,-8px);opacity:0;pointer-events:none;padding:9px 16px;border:1px solid rgba(245,194,103,.7);border-radius:7px;background:rgba(28,35,38,.86);color:#ffd48a;font:700 14px var(--sans);letter-spacing:.04em;transition:opacity .16s,transform .16s;box-shadow:0 8px 18px rgba(0,0,0,.22)}
+#screen-task .ambient-event.show{opacity:1;transform:translate(-50%,0)}
+#screen-task .instrument-console{left:3%;right:3%;bottom:2.5%;z-index:5;min-height:59%;padding:14px 18px 12px;border:1px solid #697984;border-radius:17px;background:linear-gradient(150deg,rgba(43,57,67,.97),rgba(13,23,32,.99) 72%);box-shadow:0 18px 36px rgba(0,0,0,.48),inset 0 1px 0 rgba(243,248,250,.18);transform:none}
+#screen-task .instrument-console:before{height:4px;background:linear-gradient(90deg,#647884,#e0b76b,#607984);border-radius:17px 17px 0 0}
+#screen-task .console-top{padding:3px 4px 10px;color:#c6d1d7;font:700 13px var(--sans);letter-spacing:.02em}
+#screen-task .rule-hint{color:#ffd38c;border:1px solid rgba(243,190,98,.78);background:rgba(238,177,79,.16);border-radius:6px;font:700 12px var(--sans);padding:6px 10px;letter-spacing:.02em}
+/* PCP per-trial guidance: answer-phase banner color, target-variable card and
+   the pulsing "answer now" state for the option buttons. */
+#screen-task .instrument-console.pcp-mode .console-top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:2px 4px 10px}
+#screen-task .instrument-console.pcp-mode .console-top #consoleTitle{font-size:16px;color:#eef3f6}
+#screen-task .console-top #consoleTitle{font-weight:800}
+#screen-task .console-top #consoleTitle.console-answer{color:#ffd98c}
+#screen-task .variable-card.target-variable{border-color:#e9b75f!important;box-shadow:0 0 0 2px rgba(233,183,95,.28),0 0 18px rgba(233,183,95,.18)}
+#screen-task .target-chip{display:inline-block;margin-left:7px;padding:3px 9px;border:1px solid rgba(243,190,98,.85);border-radius:999px;background:rgba(238,177,79,.18);color:#ffd38c;font:700 11px var(--sans);font-style:normal;vertical-align:middle}
+#screen-task .task-response.answer-now .response-option{animation:pcp-answer-pulse 1.05s ease-in-out infinite}
+#screen-task .task-response.answer-now .response-option:disabled{animation:none}
+@keyframes pcp-answer-pulse{0%,100%{box-shadow:0 0 0 2px rgba(126,195,176,.0);border-color:#617783}50%{box-shadow:0 0 0 3px rgba(126,195,176,.55);border-color:#7fc3b0}}
+#screen-task .gauge-grid{gap:10px}
+#screen-task .gauge-card{min-height:0;padding:10px 9px 7px;border:1px solid rgba(194,211,220,.23);border-radius:10px;background:linear-gradient(145deg,#1b2a35,#0d1821);box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
+#screen-task .gauge-card:after{inset:4px;border:1px solid rgba(255,255,255,.045);border-radius:7px}
+#screen-task .gauge-head{color:#dbe4e9;gap:7px}
+#screen-task .gauge-index{color:#e3b765;font:700 12px var(--sans)}
+#screen-task .gauge-name{color:#edf2f5;font:700 15px var(--sans);letter-spacing:0}
+#screen-task .gauge-unit{color:#9fb0bb;font:700 11px var(--sans)}
+#screen-task .dial-wrap{width:min(55%,142px);min-width:82px}
+#screen-task .dial-rim{fill:#08131c;stroke:#697c88;stroke-width:4}
+#screen-task .dial-face{fill:#142431;stroke:#40535f;stroke-width:1.4}
+#screen-task .dial-scale{stroke:#bcc9cf;stroke-width:2;opacity:.8}
+#screen-task .dial-tick{stroke:#f06f66;stroke-width:4}
+#screen-task .dial-labels text{fill:#f0a49b;font:700 8px var(--sans)}
+#screen-task .dial-needle{stroke:#f1ca80;stroke-width:3.5;filter:drop-shadow(0 0 3px rgba(240,196,114,.45))}
+#screen-task .dial-hub{fill:#f0c477;stroke:#52616a;stroke-width:2}
+#screen-task .gauge-reading strong{color:#f3f6f6;font:800 clamp(20px,2vw,29px) var(--sans);letter-spacing:.01em}
+#screen-task .gauge-reading small{color:#aebdc5;font:12px var(--sans);letter-spacing:0;white-space:normal;line-height:1.3}
+#screen-task .gauge-card.cued{border-color:#e9b75f;box-shadow:0 0 0 2px rgba(233,183,95,.19),0 0 20px rgba(233,183,95,.15);animation:gauge-cue-pulse 1.15s ease-in-out infinite}
+#screen-task .gauge-card.actual-alert{border-color:#e76c63;box-shadow:0 0 0 2px rgba(231,108,99,.18),0 0 20px rgba(231,108,99,.14);animation:gauge-alert-pulse .85s ease-in-out infinite}
+/* The cue is the dial itself changing color: face, rim, needle and the numeric
+   readout all shift so the warning is unmissable without any text banner. */
+#screen-task .gauge-card.cued .dial-face{fill:#2b2410;stroke:#e9b75f;stroke-width:2.2}
+#screen-task .gauge-card.cued .dial-rim{stroke:#e9b75f}
+#screen-task .gauge-card.cued .dial-needle{stroke:#ffd27a;filter:drop-shadow(0 0 5px rgba(255,210,122,.7))}
+#screen-task .gauge-card.cued .dial-hub{fill:#ffd27a}
+#screen-task .gauge-card.cued .gauge-reading strong{color:#ffd98c}
+#screen-task .gauge-card.actual-alert .dial-face{fill:#33120f;stroke:#e76c63;stroke-width:2.2}
+#screen-task .gauge-card.actual-alert .dial-rim{stroke:#e76c63}
+#screen-task .gauge-card.actual-alert .dial-needle{stroke:#ff8d81;filter:drop-shadow(0 0 5px rgba(255,141,129,.75))}
+#screen-task .gauge-card.actual-alert .dial-hub{fill:#ff8d81}
+#screen-task .gauge-card.actual-alert .gauge-reading strong{color:#ff9b90}
+@keyframes gauge-cue-pulse{0%,100%{box-shadow:0 0 0 2px rgba(233,183,95,.22),0 0 16px rgba(233,183,95,.14)}50%{box-shadow:0 0 0 3px rgba(233,183,95,.5),0 0 28px rgba(233,183,95,.34)}}
+@keyframes gauge-alert-pulse{0%,100%{box-shadow:0 0 0 2px rgba(231,108,99,.24),0 0 16px rgba(231,108,99,.16)}50%{box-shadow:0 0 0 3px rgba(231,108,99,.6),0 0 30px rgba(231,108,99,.4)}}
+#screen-task .task-control-bar{background:rgba(12,24,34,.95);border:1px solid #526775;border-radius:13px;color:#eaf0f3;box-shadow:0 11px 25px rgba(8,19,29,.22);padding:13px 17px}
+#screen-task .control-label{color:#f0c477;font-size:12px}
+#screen-task .task-instruction strong{color:#f2f5f7;font-size:19px}
+#screen-task .task-instruction small{color:#bac6cd;font-size:14px}
+#screen-task .response-hint{color:#c4d0d6;font-size:13px}
+#screen-task .response-hint kbd{background:#283b49;border:1px solid #607783;color:#f2f5f7}
+#screen-task .btn-alert{background:#c24e48;color:#fff;border:1px solid #e28075;border-radius:9px;box-shadow:0 4px 0 #87342f;min-height:48px;font-size:16px}
+#screen-task .btn-alert:hover{background:#d25d55}
+#screen-task .response-option{background:#243745;border:1px solid #617783;color:#f0f4f6;border-radius:8px;height:46px;min-width:86px;font:700 15px var(--sans)}
+#screen-task .response-option:hover:not(:disabled){background:#314d5e;border-color:#e3b66a}
+#screen-task .response-option:disabled{opacity:.45}
+#screen-task .task-footer{color:#7f8f99}
+#screen-task .abort-link{color:#a86b63}
+#screen-task .instrument-console.pcp-mode{min-height:55%;bottom:3%;padding:15px 18px;background:linear-gradient(150deg,rgba(43,57,67,.98),rgba(13,23,32,.99) 72%)!important;border:1px solid #697984;border-radius:17px;box-shadow:0 18px 36px rgba(0,0,0,.48)}
+#screen-task .instrument-console.pcp-mode .pcp-display{min-height:260px;padding:10px 12px}
+#screen-task .variable-card{background:linear-gradient(145deg,#1b2d3a,#101e29)!important;border:1px solid #617480!important;border-radius:11px!important;color:#eef3f5!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.07)!important;min-height:210px}
+#screen-task .variable-card:nth-child(2){background:linear-gradient(145deg,#223744,#101e29)!important}
+#screen-task .variable-card:nth-child(3){background:linear-gradient(145deg,#27313e,#121e29)!important}
+#screen-task .variable-card span{color:#dce5e9!important;font:700 15px var(--sans)!important}
+#screen-task .variable-card strong{color:#fff!important;font:800 30px var(--sans)!important}
+#screen-task .variable-card small{color:#b4c2ca!important;font:12px var(--sans)!important}
+#screen-task .variable-bar{height:8px;background:#344955!important;border-radius:8px!important}
+#screen-task .variable-bar i{background:linear-gradient(90deg,#7ab99d,#e5b967)!important}
+#screen-task .mini-trend{display:block;width:100%;height:32px;margin-top:3px;overflow:visible}
+#screen-task .mini-trend polyline{fill:none;stroke:#e6bd70;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+#screen-task .integration-plot{background:linear-gradient(145deg,#162a37,#0e1c27)!important;border:1px solid #627782!important;border-radius:11px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+#screen-task .plot-axis{stroke:#b7c6ce!important}.plot-grid{stroke:#667d89!important}.plot-label{fill:#d8e2e7!important;font:12px var(--sans)!important}
+#screen-task .plot-point{stroke:#f4f7f8!important;stroke-width:2.5!important}
+#screen-task .plot-point.flap-0{fill:#e5b65f!important}.plot-point.flap-10{fill:#7fc3b0!important}.plot-point.flap-20{fill:#9db6d4!important}
+#screen-task .object-trail{fill:none;stroke:#ecc779;stroke-width:2.5;stroke-dasharray:4 4;opacity:.72}
+#screen-task .integrated-key{color:#c4d0d6!important;font:13px var(--sans)!important}
+#screen-task .integrated-key strong{color:#f0c477!important;font:800 19px var(--sans)!important}
+#screen-task .key-symbol{background:#e5b65f}.key-symbol.flap-10{background:#7fc3b0}.key-symbol.flap-20{background:#9db6d4}
+#screen-task .task-brand .brand-mark{border-radius:8px}
+#screen-task .task-brand b{letter-spacing:.02em}
+@media(max-width:900px){
+  #screen-task .flightdeck-scene{height:680px;min-height:680px}
+  #screen-task .instrument-console{min-height:60%;padding:11px 10px 9px}
+  #screen-task .gauge-card{padding:8px 6px}
+  #screen-task .gauge-name{font-size:14px}
+  #screen-task .gauge-reading strong{font-size:22px}
+  #screen-task .gauge-reading small{font-size:11px}
+  #screen-task .dial-wrap{min-width:72px}
+  #screen-task .instrument-console.pcp-mode{min-height:57%;padding:10px}
+  #screen-task .variable-card{min-height:185px}
+}
+@media(max-width:620px){
+  #screen-task .flightdeck-scene{height:700px;min-height:700px;border-radius:14px}
+  #screen-task .windshield{left:1.5%;right:1.5%;height:49%;border-width:3px;border-bottom-width:6px}
+  #screen-task .flightdeck-status{left:10px;right:10px;top:10px}
+  #screen-task .status-pill{font-size:11px;padding:6px 8px}
+  #screen-task .instrument-console{left:1.5%;right:1.5%;bottom:1.5%;min-height:66%;padding:8px 6px}
+  #screen-task .gauge-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+  #screen-task .gauge-card{min-height:165px;padding:7px 5px}
+  #screen-task .gauge-head{gap:4px}
+  #screen-task .gauge-index{font-size:10px}
+  #screen-task .gauge-name{font-size:12px}
+  #screen-task .gauge-unit{font-size:9px}
+  #screen-task .dial-wrap{width:53%;min-width:62px}
+  #screen-task .gauge-reading strong{font-size:17px}
+  #screen-task .gauge-reading small{font-size:10px}
+  #screen-task .instrument-console.pcp-mode{min-height:59%;padding:8px}
+  #screen-task .instrument-console.pcp-mode .pcp-display{min-height:245px;padding:5px}
+  #screen-task .separate-display{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+  #screen-task .variable-card{min-height:170px;padding:8px 6px}
+  #screen-task .variable-card strong{font-size:20px!important}
+  #screen-task .variable-card span{font-size:12px!important}
+  #screen-task .mini-trend{height:25px}
+  #screen-task .integrated-display{grid-template-columns:1fr;gap:7px}
+  #screen-task .integration-plot{height:190px}
+  #screen-task .integrated-key{gap:8px;font-size:11px!important}
+  #screen-task .task-control-bar{padding:10px;gap:9px}
+  #screen-task .task-instruction strong{font-size:16px}
+  #screen-task .task-instruction small{font-size:12px}
+  #screen-task .btn-alert{min-height:45px;min-width:126px;font-size:14px}
+  #screen-task .response-option{min-width:65px;height:42px;font-size:13px}
+  #screen-task .ambient-event{top:19%;font-size:12px}
+}
+
+/* Camera diagnostics: compact, actionable, and readable on the calibration page. */
+.calibration-diagnostics{margin:14px auto 0;max-width:820px;padding:13px 16px;border:1px solid #d1dce2;border-radius:12px;background:#f7fafb;color:#243746;font-size:13px}
+.calibration-diagnostics>strong{display:block;margin-bottom:8px;font-size:14px;color:#233b4b}
+.calibration-diagnostics>div{display:flex;justify-content:space-between;gap:16px;padding:5px 0;border-top:1px solid #e3eaee}
+.calibration-diagnostics span{color:#647783;flex:0 0 90px}
+.calibration-diagnostics b{font-weight:600;text-align:right;overflow-wrap:anywhere}
+@media(max-width:620px){.calibration-diagnostics{font-size:12px;padding:11px}.calibration-diagnostics>div{align-items:flex-start;gap:8px}.calibration-diagnostics span{flex-basis:70px}}
+
+/* ===== NORTHSTAR 3.2 — 全屏眼动校准层 =====
+   校准点必须覆盖整个视口：WebGazer 的岭回归用点击位置作训练标签，
+   点只集中在页面中间的小方块里时，屏幕边缘的注视估计会系统性外推失真。 */
+body.focus-calibration{overflow:hidden;background:#f4f7f3}
+body.focus-calibration .topbar{display:none}
+body.focus-calibration #appMain{max-width:none;margin:0;padding:0}
+body.focus-calibration #screen-calibration{position:fixed;inset:0;z-index:90;display:block;animation:none;margin:0;padding:0}
+body.focus-calibration .calibration-panel{position:absolute;inset:0;margin:0;padding:0;border:0;border-radius:0;background:none;box-shadow:none}
+body.focus-calibration .calibration-stage{position:absolute;inset:0;height:auto;min-height:0;margin:0;border:0;border-radius:0;background:
+  radial-gradient(120% 100% at 50% 45%,#fcfdfb 0%,#f2f8f3 52%,#f7efe3 100%)}
+body.focus-calibration .calibration-stage:after{content:"";position:absolute;inset:0;pointer-events:none;background-image:
+  radial-gradient(rgba(122,150,138,.16) 1px,transparent 1px);background-size:44px 44px;opacity:.5}
+
+/* 校准点：视觉 22px，热区 70px（点不中会让人以为“卡住了”） */
+body.focus-calibration .cal-point{width:22px;height:22px;border:4px solid #fff;background:#f0a184;
+  box-shadow:0 0 0 3px #e79a7c,0 0 22px rgba(231,154,124,.35);z-index:2;display:block;opacity:.18;
+  background:#cfd9d3;box-shadow:0 0 0 2px rgba(150,168,159,.5);transition:opacity .2s,background .2s}
+body.focus-calibration .cal-point.active{opacity:1;background:#f0a184;box-shadow:0 0 0 3px #e79a7c,0 0 22px rgba(231,154,124,.35)}
+body.focus-calibration .cal-point.done{opacity:.55;background:#8fc3ab;box-shadow:0 0 0 3px #8fc3ab}
+body.focus-calibration .cal-point:after{content:"";position:absolute;inset:-25px;border-radius:50%}
+body.focus-calibration .cal-point.active{animation:pulsePoint 1.15s infinite}
+body.focus-calibration .cal-point:nth-child(1){left:10%;top:12%}
+body.focus-calibration .cal-point:nth-child(2){left:50%;top:12%}
+body.focus-calibration .cal-point:nth-child(3){left:85%;top:12%}
+body.focus-calibration .cal-point:nth-child(4){left:10%;top:50%}
+body.focus-calibration .cal-point:nth-child(5){left:50%;top:50%}
+body.focus-calibration .cal-point:nth-child(6){left:85%;top:50%}
+body.focus-calibration .cal-point:nth-child(7){left:10%;top:84%}
+body.focus-calibration .cal-point:nth-child(8){left:50%;top:84%}
+body.focus-calibration .cal-point:nth-child(9){left:85%;top:84%}
+
+/* 顶部状态胶囊：始终告诉被试当前在做什么、已用时多久 */
+body.focus-calibration .calibration-top{position:fixed;left:18px;top:18px;right:auto;bottom:auto;z-index:96;display:flex;
+  align-items:center;gap:12px;max-width:min(620px,calc(100vw - 220px));padding:11px 18px;border-radius:999px;
+  background:rgba(255,255,255,.94);border:1px solid rgba(30,55,70,.1);box-shadow:0 8px 22px rgba(20,40,55,.1);
+  font-size:14px;line-height:1.4;color:#3d5160}
+body.focus-calibration .calibration-live{width:9px;height:9px;flex:0 0 9px;border-radius:50%;background:#e79a7c;box-shadow:0 0 0 4px rgba(231,154,124,.18)}
+body.focus-calibration .calibration-timer{font:600 13px var(--mono);color:#96a3ab;letter-spacing:.02em}
+body.focus-calibration .calibration-count{font:700 15px var(--mono);color:#2f4a59;padding-left:12px;border-left:1px solid rgba(45,70,85,.14);white-space:nowrap}
+
+/* 底部提示与操作条 */
+body.focus-calibration .calibration-bottom{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:96;
+  display:flex;align-items:center;gap:18px;max-width:calc(100vw - 28px);padding:10px 14px 10px 18px;border-radius:999px;
+  background:rgba(255,255,255,.94);border:1px solid rgba(30,55,70,.1);box-shadow:0 8px 22px rgba(20,40,55,.1)}
+body.focus-calibration .calibration-bottom p{max-width:520px;margin:0;font-size:12px;line-height:1.55;color:#7f8d98}
+body.focus-calibration .calibration-bottom a{color:#8a6f3f}
+body.focus-calibration .calibration-controls{flex:0 0 auto}
+body.focus-calibration .calibration-controls .btn{min-height:42px;font-size:13px}
+
+/* 校准阶段：右上角摄像头预览缩小，避开右侧校准点 */
+body.focus-calibration #webgazerVideoContainer{width:150px!important;height:112px!important;top:14px!important;right:14px!important;border-width:3px!important;border-radius:14px!important}
+body.focus-calibration #webgazerFaceOverlay,body.focus-calibration #webgazerFaceFeedbackBox{border-radius:11px!important}
+
+/* 诊断面板改为左下浮层，不挤压校准区 */
+body.focus-calibration .calibration-diagnostics{position:fixed;left:16px;bottom:84px;z-index:97;margin:0;
+  max-width:min(520px,calc(100vw - 32px));max-height:42vh;overflow:auto;background:rgba(255,255,255,.97);
+  box-shadow:0 10px 30px rgba(20,40,55,.14)}
+
+@media(max-width:620px){
+  body.focus-calibration .calibration-top{left:10px;top:10px;right:auto;max-width:calc(100vw - 132px);padding:8px 12px;font-size:12px;gap:8px}
+  body.focus-calibration .calibration-timer{display:none}
+  body.focus-calibration .calibration-count{font-size:13px;padding-left:8px}
+  /* 窄屏底栏只保留操作按钮，避免遮住 88% 高度的校准点 */
+  body.focus-calibration .calibration-bottom{left:10px;right:10px;bottom:10px;transform:none;padding:8px;border-radius:16px}
+  body.focus-calibration .calibration-bottom p{display:none}
+  body.focus-calibration .calibration-controls{width:100%}
+  body.focus-calibration .calibration-controls .btn{flex:1}
+  body.focus-calibration .cal-point:nth-child(7){top:80%}
+  body.focus-calibration .cal-point:nth-child(8){top:80%}
+  body.focus-calibration .cal-point:nth-child(9){top:80%}
+  body.focus-calibration .cal-point:nth-child(1),body.focus-calibration .cal-point:nth-child(2),body.focus-calibration .cal-point:nth-child(3){top:16%}
+  body.focus-calibration #webgazerVideoContainer{width:112px!important;height:84px!important;top:8px!important;right:8px!important}
+}
+
+/* The [hidden] attribute must beat component display rules such as
+   .task-response{display:flex}; otherwise the monitoring "报告异常" button stays
+   visible during the visual-search task (and could submit an empty answer). */
+[hidden]{display:none!important}
+
+/* ------------------------------------------------------------------
+   实验二：视觉搜索（W6 / Treisman & Gelade, 1980）
+   A 特征搜索、B 联合搜索、C 预览搜索共用同一个搜索区域，只改变
+   干扰项构成与呈现时序，因此界面元素保持完全一致。
+   ------------------------------------------------------------------ */
+#screen-task .instrument-console.search-mode{min-height:64%;padding:12px 16px 14px;background:linear-gradient(150deg,rgba(31,45,56,.98),rgba(9,18,26,.99) 70%)!important;border:1px solid #697984;border-radius:17px;box-shadow:0 18px 36px rgba(0,0,0,.48),inset 0 1px 0 rgba(243,248,250,.16)}
+#screen-task .instrument-console.search-mode:before{height:4px;background:linear-gradient(90deg,#4d6270,#7fc3b0,#4d6270)}
+#screen-task .instrument-console.search-mode .console-top{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:2px 4px 9px;flex-wrap:wrap}
+#screen-task .instrument-console.search-mode .console-top #consoleTitle{font-size:16px;color:#eef3f6}
+#screen-task .instrument-console.search-mode .gauge-grid{display:none}
+#screen-task .search-stage{display:flex;flex-direction:column;gap:8px}
+#screen-task .search-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;color:#b9c7cf;font:600 12px var(--sans)}
+#screen-task .search-phase{color:#ffd48a;font-weight:800;letter-spacing:.02em}
+#screen-task .search-phase.phase-answer{color:#93d9ba}
+#screen-task .search-tip{color:#93a6b1}
+#screen-task .search-tip kbd{display:inline-block;min-width:18px;text-align:center;padding:2px 6px;border-radius:5px;border:1px solid #607783;background:#283b49;color:#f2f5f7;font:700 11px var(--mono)}
+#screen-task .search-field{position:relative;height:clamp(280px,42vh,400px);border-radius:12px;border:1px solid #3f5666;background:radial-gradient(ellipse at 50% 45%,#152634 0%,#0a151d 72%);overflow:hidden;box-shadow:inset 0 0 70px rgba(0,0,0,.6);transition:border-color .15s,box-shadow .15s}
+#screen-task .search-field:before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,rgba(148,183,199,.055) 0 1px,transparent 1px 40px),repeating-linear-gradient(90deg,rgba(148,183,199,.055) 0 1px,transparent 1px 40px);pointer-events:none}
+#screen-task .search-item{position:absolute;transform:translate(-50%,-50%);border-radius:2px;box-shadow:0 0 5px rgba(0,0,0,.6)}
+#screen-task .search-item[data-color="red"]{background:linear-gradient(180deg,#ff9184,#d64a44)}
+#screen-task .search-item[data-color="green"]{background:linear-gradient(180deg,#85ddaa,#3f9e6f)}
+#screen-task .search-item[data-orient="v"]{width:9px;height:27px}
+#screen-task .search-item[data-orient="h"]{width:27px;height:9px}
+#screen-task .search-fixation{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:#eadcb4;font:300 36px var(--sans);line-height:1;opacity:.92;text-shadow:0 0 12px rgba(234,220,180,.35)}
+#screen-task .search-stage.preview-active .search-field{border-color:#e0b76b;box-shadow:inset 0 0 70px rgba(0,0,0,.55),0 0 0 2px rgba(224,183,107,.22)}
+#screen-task .search-stage.feedback-correct .search-field{border-color:#7fc3b0;box-shadow:inset 0 0 70px rgba(0,0,0,.55),0 0 0 2px rgba(127,195,176,.42)}
+#screen-task .search-stage.feedback-wrong .search-field{border-color:#e88987;box-shadow:inset 0 0 70px rgba(0,0,0,.55),0 0 0 2px rgba(232,137,135,.42)}
+#screen-task .legend-swatch{display:inline-block;vertical-align:-3px;width:7px;height:16px;border-radius:1px;margin:0 4px 0 0;background:linear-gradient(180deg,#ff9184,#d64a44)}
+#screen-task .search-response{gap:14px}
+#screen-task .search-response .response-options{display:flex;gap:8px}
+#screen-task .search-response .response-option{min-width:96px;height:48px;font-size:16px;font-weight:700}
+#screen-task .search-response .response-option[data-value="present"]{border-color:#7fc3b0}
+#screen-task .search-response .response-option[data-value="absent"]{border-color:#7d8fa0}
+@media(max-width:900px){
+  #screen-task .instrument-console.search-mode{min-height:62%;padding:10px}
+  #screen-task .search-field{height:clamp(250px,40vh,340px)}
+}
+@media(max-width:620px){
+  #screen-task .instrument-console.search-mode{min-height:74%;padding:9px 8px}
+  #screen-task .search-field{height:clamp(240px,40vh,320px)}
+  #screen-task .search-item[data-orient="v"]{width:8px;height:23px}
+  #screen-task .search-item[data-orient="h"]{width:23px;height:8px}
+  #screen-task .search-head{font-size:11px;gap:6px}
+  #screen-task .search-response{width:100%;flex-direction:column;align-items:stretch;gap:8px}
+  #screen-task .search-response .response-options{width:100%}
+  #screen-task .search-response .response-option{flex:1;min-width:0}
+}
+
+/* ── 模型可视化（结果呈现）：SDT / SEEV / 线性模型 ── */
+.model-figure{margin:16px 0 6px;padding:13px 13px 11px;border:1px solid #e6ece9;border-radius:12px;background:#fffdf9}
+.model-figure svg{display:block;width:100%;height:auto;overflow:visible}
+.model-figure figcaption{margin-top:10px;font-size:10.5px;line-height:1.8;color:#8b979c}
+.model-legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:9px}
+.model-legend span{display:inline-flex;align-items:center;gap:5px;font-size:10px;color:#67787f}
+.model-legend i{display:block;width:9px;height:9px;border-radius:2px}
+@media (max-width:720px){.model-figure figcaption{font-size:12px}.model-legend span{font-size:12px}}
+
+/* ── 被试完成实验后的“本次结果”：模型预测 vs 实测 ── */
+.session-model{margin:24px 0 2px}
+.session-model:empty{display:none}
+.model-heading h2{font-size:22px;letter-spacing:-.02em;color:#4d6170;margin:9px 0 9px}
+.model-heading p{font-size:13px;line-height:1.85;color:#7c898b;margin:0 0 9px;max-width:920px}
+.model-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start;margin-top:14px}
+.model-grid.single{grid-template-columns:1fr}
+.model-grid.single .model-figure{max-width:780px;margin-left:auto;margin-right:auto}
+.session-model .model-figure{margin:0;background:#fffdf8;border:1.5px solid #edf1e9}
+.session-model .model-figure figcaption{font-size:11.5px;line-height:1.75}
+.session-model .model-legend span{font-size:11px}
+.model-caveat{margin:14px 0 0;padding:11px 15px;border-left:3px solid #e9bc7d;background:#fff5e6;border-radius:0 10px 10px 0;font-size:12px;line-height:1.8;color:#8a7554}
+@media (max-width:980px){.model-grid{grid-template-columns:1fr}}
+.model-lead{margin:2px 0 12px;padding:12px 15px;border-radius:0 10px 10px 0;border-left:3px solid #7d9c93;background:#f1f6f3;font-size:13px !important;line-height:1.9 !important;color:#4f6660 !important}
+
+/* ── 实验二（视觉搜索）不使用战机座舱背景：去掉风挡照片、机舱遮光与 3D 座舱 ── */
+#screen-task .flightdeck-scene.search-scene{height:auto;min-height:min(58vh,560px);padding:16px;display:flex;align-items:center;background:linear-gradient(180deg,#1b2833 0%,#0d161d 72%,#0a1219 100%);border-color:#33454f}
+#screen-task .flightdeck-scene.search-scene .windshield,
+#screen-task .flightdeck-scene.search-scene .cockpit-canopy,
+#screen-task .flightdeck-scene.search-scene #cockpit3d,
+#screen-task .flightdeck-scene.search-scene .flightdeck-status{display:none!important}
+#screen-task .flightdeck-scene.search-scene:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 34%,rgba(127,195,176,.09),transparent 64%);pointer-events:none;z-index:0}
+#screen-task .flightdeck-scene.search-scene .instrument-console.search-mode{position:relative;left:auto;right:auto;top:auto;bottom:auto;width:100%;min-height:0;transform:none;display:flex;flex-direction:column;gap:6px}
+#screen-task .flightdeck-scene.search-scene .search-stage{flex:0 1 auto;min-height:0;display:flex;flex-direction:column;gap:10px}
+#screen-task .flightdeck-scene.search-scene .search-field{flex:0 0 auto;height:clamp(280px,42vh,400px);max-height:400px}
+@media (max-width:900px){
+  #screen-task .flightdeck-scene.search-scene{padding:9px;min-height:0}
+  #screen-task .flightdeck-scene.search-scene .instrument-console.search-mode{padding:10px 9px}
+  #screen-task .flightdeck-scene.search-scene .search-field{height:clamp(250px,40vh,340px);max-height:340px}
+}
